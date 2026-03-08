@@ -1,0 +1,1873 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>STRIDE — Premium Footwear</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:ital,wght@0,300;0,400;0,600;1,300&display=swap" rel="stylesheet">
+<style>
+/* ══════════ ORIGINAL STRIDE VARIABLES ══════════ */
+:root{--black:#0a0a0a;--white:#f5f2ee;--cream:#e8e2d9;--accent:#ff3d00;--gray:#3a3a3a;--mid:#8a8a8a;--success:#22c55e;--card:#111;--border:rgba(255,255,255,0.08)}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--black);color:var(--white);font-family:'Barlow',sans-serif;font-weight:300;overflow-x:hidden;cursor:none}
+
+/* ══ LIGHT THEME OVERRIDES ══ */
+[data-theme="light"]{--black:#f5f2ee;--white:#0a0a0a;--cream:#e0dbd2;--mid:#666;--card:#fff;--border:rgba(0,0,0,0.1)}
+[data-theme="light"] body{background:#f5f2ee;color:#0a0a0a;}
+[data-theme="light"] nav{background:rgba(245,242,238,.95);border-color:rgba(0,0,0,.08);}
+[data-theme="light"] .nav-links a{color:#333;}
+[data-theme="light"] .logo{color:#0a0a0a;}
+[data-theme="light"] .nav-cart{color:#0a0a0a;border-color:rgba(0,0,0,.15);}
+[data-theme="light"] .product-card{background:#fff;}
+[data-theme="light"] .product-img{background:linear-gradient(135deg,#ece8e0,#f5f2ee);}
+[data-theme="light"] .feature-card{background:#eee8e0;}
+[data-theme="light"] .stat{background:#fff;}
+[data-theme="light"] .cart-drawer{background:#f5f2ee;}
+[data-theme="light"] .cart-header,.cart-item,.cart-footer{border-color:rgba(0,0,0,.08);}
+[data-theme="light"] .cart-title,[data-theme="light"] .cart-item-name,[data-theme="light"] .qty-val{color:#0a0a0a;}
+[data-theme="light"] .promo-input{background:rgba(0,0,0,.04);border-color:rgba(0,0,0,.12);color:#0a0a0a;}
+[data-theme="light"] .qty-btn{border-color:rgba(0,0,0,.12);color:#0a0a0a;}
+[data-theme="light"] .modal{background:#fff;}
+[data-theme="light"] .modal-img-side{background:#ece8e0;}
+[data-theme="light"] .modal-details{background:#fff;color:#0a0a0a;}
+[data-theme="light"] .modal-name,[data-theme="light"] .size-btn{color:#0a0a0a;}
+[data-theme="light"] .size-btn{border-color:rgba(0,0,0,.12);}
+[data-theme="light"] .modal-wish-btn{border-color:rgba(0,0,0,.12);color:#666;}
+[data-theme="light"] .pay-modal{background:#fff;color:#0a0a0a;}
+[data-theme="light"] .pay-header,[data-theme="light"] .pay-steps,[data-theme="light"] .pay-footer{border-color:rgba(0,0,0,.08);}
+[data-theme="light"] .pay-title,[data-theme="light"] .pay-section-title{color:#0a0a0a;}
+[data-theme="light"] .pay-step{color:#666;}
+[data-theme="light"] .pay-step.active{color:#0a0a0a;}
+[data-theme="light"] .form-input,[data-theme="light"] .form-select{background:rgba(0,0,0,.03);border-color:rgba(0,0,0,.12);color:#0a0a0a;}
+[data-theme="light"] .pay-summary{background:#ece8e0;border-color:rgba(0,0,0,.08);}
+[data-theme="light"] .pay-item-name{color:#0a0a0a;}
+[data-theme="light"] .shipping-opt{border-color:rgba(0,0,0,.1);}
+[data-theme="light"] .pay-total-line.main{color:#0a0a0a;}
+[data-theme="light"] .cta-title em{-webkit-text-stroke:1px rgba(0,0,0,.3);}
+[data-theme="light"] .cta-input{background:rgba(0,0,0,.04);border-color:rgba(0,0,0,.12);color:#0a0a0a;}
+[data-theme="light"] footer{border-color:rgba(0,0,0,.1);}
+[data-theme="light"] .footer-logo,[data-theme="light"] .footer-copy{color:#666;}
+[data-theme="light"] .modal-thumb{background:#ece8e0;border-color:rgba(0,0,0,.1);}
+/* Auth/Admin light */
+[data-theme="light"] .ca-right{background:#f5f2ee;}
+[data-theme="light"] .ca-inp{background:rgba(0,0,0,.04);border-color:rgba(0,0,0,.12);color:#0a0a0a;}
+[data-theme="light"] .ca-inp::placeholder{color:#888;}
+[data-theme="light"] .ca-form-title,[data-theme="light"] .ca-form-sub,.ca-switch{color:#0a0a0a;}
+[data-theme="light"] .ca-tab{background:rgba(0,0,0,.04);color:#666;}
+[data-theme="light"] .ca-social-btn{border-color:rgba(0,0,0,.1);color:#0a0a0a;}
+[data-theme="light"] .ca-divider::before,[data-theme="light"] .ca-divider::after{background:rgba(0,0,0,.1);}
+[data-theme="light"] .ca-strength-bar{background:rgba(0,0,0,.08);}
+[data-theme="light"] .aac{background:#f5f2ee;}
+[data-theme="light"] .aac-inp{background:rgba(0,0,0,.04);border-color:rgba(0,0,0,.12);color:#0a0a0a;}
+[data-theme="light"] #adminPage{background:#f0ece4;}
+[data-theme="light"] .admin-nav{background:rgba(245,242,238,.95);}
+[data-theme="light"] .admin-sidebar{background:rgba(0,0,0,.03);}
+[data-theme="light"] .admin-logo{color:#0a0a0a;}
+[data-theme="light"] .stat-card,.chart-card,.admin-tbl-card,.pm-card{background:#fff;border-color:rgba(0,0,0,.08);}
+[data-theme="light"] .sc-num,[data-theme="light"] .chart-title,[data-theme="light"] .admin-tbl-title,[data-theme="light"] .pm-name,.a-title{color:#0a0a0a;}
+[data-theme="light"] thead tr{background:rgba(255,61,0,.04);}
+[data-theme="light"] tbody tr{border-color:rgba(0,0,0,.04);}
+[data-theme="light"] td{color:#0a0a0a;}
+[data-theme="light"] .admin-search{background:rgba(0,0,0,.03);color:#0a0a0a;}
+[data-theme="light"] .cp-modal{background:#f5f2ee;}
+[data-theme="light"] .cp-order-card{background:rgba(255,61,0,.04);}
+[data-theme="light"] .cp-name,.cp-email,.cp-order-total,.cp-order-meta{color:#0a0a0a;}
+[data-theme="light"] .cp-prof-inp{background:rgba(0,0,0,.04);border-color:rgba(0,0,0,.1);color:#0a0a0a;}
+[data-theme="light"] .sz-lbl{background:rgba(0,0,0,.04);border-color:rgba(0,0,0,.1);}
+[data-theme="light"] .pem{background:#f5f2ee;}
+[data-theme="light"] .pem-inp{background:rgba(0,0,0,.04);border-color:rgba(0,0,0,.1);color:#0a0a0a;}
+[data-theme="light"] .sz-qty{background:rgba(0,0,0,.04);border-color:rgba(0,0,0,.1);color:#0a0a0a;}
+[data-theme="light"] .img-prev{background:rgba(0,0,0,.04);border-color:rgba(0,0,0,.1);}
+
+/* ══ THEME TOGGLE ══ */
+.theme-toggle-btn{width:46px;height:26px;background:rgba(255,255,255,.08);border:1px solid rgba(255,61,0,.3);border-radius:13px;cursor:pointer;display:flex;align-items:center;padding:2px;transition:all .3s;flex-shrink:0;}
+[data-theme="light"] .theme-toggle-btn{background:rgba(0,0,0,.06);}
+.theme-knob{width:20px;height:20px;border-radius:50%;background:var(--accent);display:flex;align-items:center;justify-content:center;font-size:11px;transition:transform .3s;user-select:none;}
+[data-theme="light"] .theme-knob{transform:translateX(20px);}
+
+/* ══ ORIGINAL CURSOR ══ */
+.cursor{width:12px;height:12px;background:var(--accent);border-radius:50%;position:fixed;top:0;left:0;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);transition:transform .15s ease,background .3s,width .3s,height .3s}
+.cursor-ring{width:40px;height:40px;border:1px solid rgba(255,61,0,.5);border-radius:50%;position:fixed;top:0;left:0;pointer-events:none;z-index:9998;transform:translate(-50%,-50%);transition:border-color .3s}
+
+/* ══ ORIGINAL NAV ══ */
+nav{position:fixed;top:0;left:0;right:0;z-index:500;display:flex;align-items:center;justify-content:space-between;padding:24px 60px;background:rgba(10,10,10,.9);backdrop-filter:blur(20px);border-bottom:1px solid rgba(255,255,255,.04)}
+.logo{font-family:'Bebas Neue',sans-serif;font-size:30px;letter-spacing:6px;color:var(--white);text-decoration:none}
+.nav-links{display:flex;gap:40px;list-style:none}
+.nav-links a{color:var(--white);text-decoration:none;font-size:12px;letter-spacing:3px;text-transform:uppercase;opacity:.6;transition:opacity .3s}
+.nav-links a:hover{opacity:1}
+.nav-right{display:flex;align-items:center;gap:10px;}
+.nav-cart{position:relative;cursor:none;background:none;border:1px solid var(--border);padding:10px 20px;color:var(--white);font-family:'Barlow',sans-serif;font-size:12px;letter-spacing:3px;text-transform:uppercase;display:flex;align-items:center;gap:10px;transition:all .3s}
+.nav-cart:hover{border-color:var(--accent);color:var(--accent)}
+.cart-badge{background:var(--accent);color:#fff;border-radius:50%;width:18px;height:18px;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:600}
+
+/* ══ NAV CUSTOMER BUTTONS ══ */
+.nav-cust-btn{background:none;border:1px solid rgba(255,255,255,.12);color:var(--mid);padding:7px 16px;font-family:'Barlow',sans-serif;font-size:10px;letter-spacing:3px;text-transform:uppercase;cursor:pointer;transition:all .3s;}
+.nav-cust-btn:hover{border-color:var(--accent);color:var(--accent);}
+.nav-cust-btn.filled{background:var(--accent);color:#fff;border-color:var(--accent);}
+.nav-cust-btn.filled:hover{background:#cc2e00;}
+.nav-logged-chip{display:none;align-items:center;gap:8px;background:rgba(255,61,0,.1);border:1px solid rgba(255,61,0,.3);padding:4px 14px 4px 5px;cursor:pointer;transition:border-color .2s;}
+.nav-logged-chip:hover{border-color:var(--accent);}
+.nav-chip-avatar{width:28px;height:28px;background:var(--accent);display:flex;align-items:center;justify-content:center;font-family:'Bebas Neue',sans-serif;font-size:14px;font-weight:700;color:#fff;}
+.nav-chip-name{font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--white);}
+.nav-admin-gear{width:36px;height:36px;background:none;border:1px solid rgba(255,255,255,.1);color:var(--mid);cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:16px;transition:all .3s;}
+.nav-admin-gear:hover{border-color:var(--accent);color:var(--accent);}
+
+/* ══ ORIGINAL HERO ══ */
+.hero{height:100vh;display:flex;align-items:center;position:relative;overflow:hidden;margin-top:0;padding-top:80px}
+.hero-bg{position:absolute;inset:0;background:radial-gradient(ellipse at 70% 50%,#1a0800 0%,var(--black) 70%)}
+.hero-number{position:absolute;right:-20px;top:50%;transform:translateY(-50%);font-family:'Bebas Neue',sans-serif;font-size:400px;color:rgba(255,255,255,.03);line-height:1;user-select:none;animation:floatNum 8s ease-in-out infinite}
+@keyframes floatNum{0%,100%{transform:translateY(-50%)}50%{transform:translateY(-52%) translateX(-10px)}}
+.hero-content{padding:0 60px;position:relative;z-index:2;max-width:640px}
+.hero-tag{font-size:11px;letter-spacing:5px;text-transform:uppercase;color:var(--accent);margin-bottom:24px;opacity:0;animation:fadeUp .8s .2s forwards}
+.hero-title{font-family:'Bebas Neue',sans-serif;font-size:clamp(80px,12vw,160px);line-height:.9;letter-spacing:2px;opacity:0;animation:fadeUp .8s .4s forwards}
+.hero-title span{color:var(--accent);display:block}
+.hero-sub{margin-top:32px;font-size:16px;line-height:1.7;color:var(--mid);max-width:380px;opacity:0;animation:fadeUp .8s .6s forwards}
+.hero-cta{margin-top:48px;display:flex;gap:24px;align-items:center;opacity:0;animation:fadeUp .8s .8s forwards}
+
+/* ══ COUNTDOWN ══ */
+.hero-countdown{margin-top:32px;display:flex;gap:14px;align-items:center;opacity:0;animation:fadeUp .8s 1.0s forwards}
+.hcd-item{text-align:center;background:rgba(255,61,0,.08);border:1px solid rgba(255,61,0,.2);padding:10px 16px;min-width:62px}
+.hcd-num{font-family:'Bebas Neue',sans-serif;font-size:28px;color:var(--accent);line-height:1}
+.hcd-label{font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--mid);margin-top:2px}
+.hcd-sep{font-family:'Bebas Neue',sans-serif;font-size:26px;color:var(--accent);opacity:.5}
+.hcd-tag{font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--mid)}
+
+.btn-primary{background:var(--accent);color:var(--white);padding:18px 48px;font-size:12px;letter-spacing:4px;text-transform:uppercase;text-decoration:none;position:relative;overflow:hidden;display:inline-block;transition:transform .3s;cursor:none;border:none;font-family:'Barlow',sans-serif}
+.btn-primary::before{content:'';position:absolute;inset:0;background:#fff;transform:translateX(-101%);transition:transform .4s cubic-bezier(.77,0,.175,1)}
+.btn-primary:hover::before{transform:translateX(0)}
+.btn-primary:hover{color:var(--black);transform:translateY(-2px)}
+.btn-primary span{position:relative;z-index:1}
+.btn-ghost{color:var(--white);font-size:12px;letter-spacing:3px;text-transform:uppercase;text-decoration:none;opacity:.6;transition:opacity .3s;display:flex;align-items:center;gap:10px;cursor:none;background:none;border:none;font-family:'Barlow',sans-serif;padding:0}
+.btn-ghost::after{content:'→';font-size:18px;transition:transform .3s}
+.btn-ghost:hover{opacity:1}
+.btn-ghost:hover::after{transform:translateX(6px)}
+.shoe-showcase{position:absolute;right:0;top:50%;transform:translateY(-50%);width:55%;height:80vh;display:flex;align-items:center;justify-content:center;opacity:0;animation:fadeIn 1.2s .5s forwards}
+.shoe-3d-container{position:relative;width:600px;height:400px}
+.shoe-svg{width:100%;height:100%;animation:shoeFloat 6s ease-in-out infinite;filter:drop-shadow(0 60px 80px rgba(255,61,0,.3)) drop-shadow(0 20px 40px rgba(0,0,0,.8))}
+@keyframes shoeFloat{0%,100%{transform:translateY(0) rotate(-5deg)}50%{transform:translateY(-20px) rotate(-3deg)}}
+.shoe-glow{position:absolute;bottom:-40px;left:50%;transform:translateX(-50%);width:400px;height:60px;background:radial-gradient(ellipse,rgba(255,61,0,.4) 0%,transparent 70%);animation:glowPulse 6s ease-in-out infinite}
+@keyframes glowPulse{0%,100%{opacity:.4;transform:translateX(-50%) scaleX(1)}50%{opacity:.7;transform:translateX(-50%) scaleX(.85)}}
+
+/* ══ ORIGINAL STATS / MARQUEE / SECTION ══ */
+.stats-bar{display:flex;border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+.stat{flex:1;padding:40px 60px;border-right:1px solid var(--border);transition:background .4s}
+.stat:last-child{border-right:none}
+.stat:hover{background:rgba(255,61,0,.05)}
+.stat-num{font-family:'Bebas Neue',sans-serif;font-size:64px;color:var(--white);line-height:1;letter-spacing:2px}
+.stat-num span{color:var(--accent)}
+.stat-label{font-size:11px;letter-spacing:3px;text-transform:uppercase;color:var(--mid);margin-top:8px}
+.marquee-section{border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:20px 0;overflow:hidden}
+.marquee-track{display:flex;animation:marquee 20s linear infinite;white-space:nowrap}
+.marquee-track:hover{animation-play-state:paused}
+@keyframes marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+.marquee-item{font-family:'Bebas Neue',sans-serif;font-size:80px;letter-spacing:4px;padding:0 60px;opacity:.06;transition:opacity .3s}
+.marquee-item:hover{opacity:.2}
+.section{padding:120px 60px;position:relative}
+.section-header{display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:60px}
+.section-title{font-family:'Bebas Neue',sans-serif;font-size:clamp(60px,8vw,100px);line-height:.9;letter-spacing:2px}
+.section-title em{font-style:normal;-webkit-text-stroke:1px var(--white);color:transparent}
+.section-link{color:var(--accent);text-decoration:none;font-size:12px;letter-spacing:3px;text-transform:uppercase;padding-bottom:4px;border-bottom:1px solid var(--accent);transition:opacity .3s;margin-bottom:8px}
+.section-link:hover{opacity:.7}
+.filter-bar{display:flex;gap:12px;margin-bottom:48px;flex-wrap:wrap;align-items:center}
+.filter-label{font-size:11px;letter-spacing:3px;text-transform:uppercase;color:var(--mid);margin-right:8px}
+.filter-btn{background:none;border:1px solid var(--border);color:var(--mid);padding:8px 20px;font-family:'Barlow',sans-serif;font-size:11px;letter-spacing:2px;text-transform:uppercase;cursor:none;transition:all .3s}
+.filter-btn:hover,.filter-btn.active{border-color:var(--accent);color:var(--accent);background:rgba(255,61,0,.07)}
+.products-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:2px}
+.product-card{background:#111;position:relative;overflow:hidden;cursor:none;transition:transform .3s}
+.product-card:hover{transform:translateY(-4px)}
+.product-img{width:100%;aspect-ratio:1;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,#141414,#1a1a1a);position:relative;overflow:hidden;transition:transform .6s cubic-bezier(.4,0,.2,1)}
+.product-img::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 50% 80%,rgba(255,61,0,.15) 0%,transparent 60%);opacity:0;transition:opacity .5s}
+.product-card:hover .product-img::before{opacity:1}
+.shoe-img{width:80%;height:80%;object-fit:contain;transition:transform .6s cubic-bezier(.4,0,.2,1);filter:drop-shadow(0 10px 30px rgba(0,0,0,.7))}
+.product-card:hover .shoe-img{transform:translateY(-10px) rotate(3deg) scale(1.05);filter:drop-shadow(0 20px 50px rgba(0,0,0,.8)) drop-shadow(0 5px 20px rgba(255,61,0,.25))}
+.badge{position:absolute;top:14px;left:14px;padding:5px 12px;font-family:'Bebas Neue',sans-serif;font-size:13px;letter-spacing:1px}
+.badge-new{background:var(--accent);color:#fff}
+.badge-sale{background:#ff6b00;color:#fff}
+.badge-hot{background:linear-gradient(135deg,#ff3d00,#ff8800);color:#fff}
+.badge-ltd{background:linear-gradient(135deg,#6600cc,#cc00ff);color:#fff}
+.product-quick{position:absolute;bottom:0;left:0;right:0;padding:14px;background:rgba(255,61,0,.9);color:#fff;text-align:center;font-size:11px;letter-spacing:3px;text-transform:uppercase;transform:translateY(100%);transition:transform .3s;cursor:none;border:none;font-family:'Barlow',sans-serif;width:100%}
+.product-card:hover .product-quick{transform:translateY(0)}
+.product-info{padding:20px 22px}
+.product-name{font-family:'Bebas Neue',sans-serif;font-size:24px;letter-spacing:2px;line-height:1}
+.product-sub{font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--mid);margin-top:4px}
+.product-price-row{display:flex;align-items:center;gap:12px;margin-top:10px}
+.product-price{font-family:'Bebas Neue',sans-serif;font-size:28px;color:var(--accent);letter-spacing:2px}
+.product-old-price{font-size:15px;color:var(--mid);text-decoration:line-through}
+.product-disc{font-size:11px;background:rgba(255,61,0,.15);color:var(--accent);padding:2px 8px;border-radius:2px;font-weight:600}
+.color-options{display:flex;gap:8px;padding:0 22px 18px}
+.color-chip{width:16px;height:16px;border-radius:50%;cursor:none;transition:transform .2s,box-shadow .2s;border:1.5px solid rgba(255,255,255,.15);flex-shrink:0}
+.color-chip:hover{transform:scale(1.5)}
+.color-chip.active{border-color:white;box-shadow:0 0 0 2px rgba(255,255,255,.5)}
+.wishlist-btn{position:absolute;top:14px;right:14px;width:36px;height:36px;background:rgba(0,0,0,.6);border:1px solid rgba(255,255,255,.1);color:var(--mid);display:flex;align-items:center;justify-content:center;cursor:none;font-size:16px;opacity:0;transition:all .3s}
+.product-card:hover .wishlist-btn{opacity:1}
+.wishlist-btn:hover,.wishlist-btn.active{color:#ff3d00;border-color:rgba(255,61,0,.5)}
+.size-row-mini{display:flex;gap:6px;padding:0 22px 14px;flex-wrap:wrap}
+.size-mini{font-size:10px;letter-spacing:1px;border:1px solid rgba(255,255,255,.12);color:var(--mid);padding:4px 8px;cursor:none;transition:all .2s;user-select:none}
+.size-mini:hover,.size-mini.active{border-color:var(--accent);color:var(--accent)}
+.size-mini.oos{opacity:.3;text-decoration:line-through;cursor:not-allowed}
+.features{display:grid;grid-template-columns:1fr 1fr;gap:2px}
+.feature-card{background:#0f0f0f;padding:80px 60px;position:relative;overflow:hidden}
+.feature-card::before{content:'';position:absolute;top:0;left:0;width:3px;height:0;background:var(--accent);transition:height .5s cubic-bezier(.4,0,.2,1)}
+.feature-card:hover::before{height:100%}
+.feature-icon{font-size:48px;margin-bottom:32px;display:block;transition:transform .4s}
+.feature-card:hover .feature-icon{transform:scale(1.1) rotate(-5deg)}
+.feature-title{font-family:'Bebas Neue',sans-serif;font-size:48px;letter-spacing:2px;line-height:1;margin-bottom:16px}
+.feature-desc{font-size:15px;line-height:1.8;color:var(--mid);max-width:360px}
+.cta-section{text-align:center;padding:160px 60px;position:relative;overflow:hidden}
+.cta-bg{position:absolute;inset:0;background:radial-gradient(ellipse at 50% 50%,rgba(255,61,0,.12) 0%,transparent 60%)}
+.cta-title{font-family:'Bebas Neue',sans-serif;font-size:clamp(60px,10vw,140px);letter-spacing:4px;line-height:.9;position:relative}
+.cta-title em{font-style:normal;-webkit-text-stroke:1px rgba(255,255,255,.4);color:transparent}
+.cta-sub{font-size:17px;color:var(--mid);margin:32px auto;max-width:500px;line-height:1.7;position:relative}
+.cta-form{display:flex;max-width:480px;margin:0 auto;position:relative}
+.cta-input{flex:1;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.15);border-right:none;color:var(--white);padding:18px 24px;font-family:'Barlow',sans-serif;font-size:14px;outline:none;transition:border-color .3s}
+.cta-input::placeholder{color:var(--mid)}
+.cta-input:focus{border-color:var(--accent)}
+.cta-submit{background:var(--accent);border:none;color:white;padding:18px 32px;font-family:'Barlow',sans-serif;font-size:12px;letter-spacing:3px;text-transform:uppercase;cursor:none;transition:background .3s}
+.cta-submit:hover{background:white;color:var(--black)}
+footer{border-top:1px solid var(--border);padding:60px;display:flex;justify-content:space-between;align-items:center}
+.footer-logo{font-family:'Bebas Neue',sans-serif;font-size:28px;letter-spacing:6px;opacity:.4}
+.footer-links{display:flex;gap:40px;list-style:none}
+.footer-links a{color:var(--mid);text-decoration:none;font-size:12px;letter-spacing:2px;text-transform:uppercase;transition:color .3s}
+.footer-links a:hover{color:var(--accent)}
+.footer-copy{font-size:12px;color:var(--mid);opacity:.4}
+@keyframes fadeUp{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+.reveal{opacity:0;transform:translateY(40px);transition:opacity .8s ease,transform .8s ease}
+.reveal.visible{opacity:1;transform:translateY(0)}
+body::after{content:'';position:fixed;inset:0;pointer-events:none;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");opacity:.025;z-index:9990}
+
+/* ══ ORIGINAL CART DRAWER ══ */
+.cart-overlay{position:fixed;inset:0;background:rgba(0,0,0,.7);z-index:800;opacity:0;pointer-events:none;transition:opacity .4s;backdrop-filter:blur(4px)}
+.cart-overlay.open{opacity:1;pointer-events:all}
+.cart-drawer{position:fixed;top:0;right:0;bottom:0;width:480px;background:#0d0d0d;border-left:1px solid var(--border);z-index:900;display:flex;flex-direction:column;transform:translateX(100%);transition:transform .5s cubic-bezier(.4,0,.2,1)}
+.cart-drawer.open{transform:translateX(0)}
+.cart-header{padding:32px 36px 24px;border-bottom:1px solid var(--border);display:flex;justify-content:space-between;align-items:center}
+.cart-title{font-family:'Bebas Neue',sans-serif;font-size:36px;letter-spacing:3px;line-height:1}
+.cart-title span{color:var(--accent)}
+.cart-close{background:none;border:1px solid var(--border);color:var(--white);width:40px;height:40px;display:flex;align-items:center;justify-content:center;cursor:none;font-size:18px;transition:all .3s}
+.cart-close:hover{border-color:var(--accent);color:var(--accent)}
+.cart-items{flex:1;overflow-y:auto;padding:24px 36px}
+.cart-empty{text-align:center;padding:80px 20px;color:var(--mid)}
+.cart-empty-icon{font-size:60px;margin-bottom:20px;opacity:.3}
+.cart-empty p{font-size:14px;letter-spacing:2px;text-transform:uppercase}
+.cart-item{display:grid;grid-template-columns:90px 1fr 36px;gap:18px;padding:20px 0;border-bottom:1px solid var(--border);align-items:start}
+.cart-item-img{background:#1a1a1a;display:flex;align-items:center;justify-content:center;height:90px}
+.cart-item-img img{width:80px;height:80px;object-fit:contain}
+.cart-item-name{font-family:'Bebas Neue',sans-serif;font-size:20px;letter-spacing:1px;margin-bottom:6px}
+.cart-item-meta{font-size:11px;color:var(--mid);letter-spacing:2px;text-transform:uppercase;margin-bottom:12px;display:flex;gap:12px}
+.cart-item-price{font-family:'Bebas Neue',sans-serif;font-size:22px;color:var(--accent);letter-spacing:1px}
+.cart-qty{display:flex;align-items:center;gap:12px;margin-top:10px}
+.qty-btn{width:28px;height:28px;background:none;border:1px solid var(--border);color:var(--white);display:flex;align-items:center;justify-content:center;cursor:none;font-size:16px;transition:all .2s}
+.qty-btn:hover{border-color:var(--accent);color:var(--accent)}
+.qty-val{font-family:'Bebas Neue',sans-serif;font-size:20px;min-width:24px;text-align:center}
+.remove-btn{background:none;border:none;color:var(--mid);cursor:none;font-size:18px;padding:4px;transition:color .2s;align-self:start}
+.remove-btn:hover{color:var(--accent)}
+.cart-footer{padding:24px 36px 32px;border-top:1px solid var(--border)}
+.promo-row{display:flex;gap:0;margin-bottom:20px}
+.promo-input{flex:1;background:rgba(255,255,255,.04);border:1px solid var(--border);border-right:none;color:var(--white);padding:12px 18px;font-family:'Barlow',sans-serif;font-size:13px;outline:none;transition:border-color .3s}
+.promo-input::placeholder{color:var(--mid);font-size:12px}
+.promo-input:focus{border-color:var(--accent)}
+.promo-btn{background:none;border:1px solid var(--border);color:var(--mid);padding:12px 20px;font-family:'Barlow',sans-serif;font-size:11px;letter-spacing:2px;text-transform:uppercase;cursor:none;transition:all .3s}
+.promo-btn:hover{border-color:var(--accent);color:var(--accent)}
+.cart-totals{margin-bottom:24px}
+.cart-total-row{display:flex;justify-content:space-between;padding:8px 0;font-size:14px;color:var(--mid)}
+.cart-total-row.grand{border-top:1px solid var(--border);padding-top:16px;margin-top:8px;font-family:'Bebas Neue',sans-serif;font-size:28px;letter-spacing:2px;color:var(--white)}
+.cart-total-row.grand .total-price{color:var(--accent)}
+.cart-total-row.discount-row{color:var(--success)}
+.checkout-btn{width:100%;background:var(--accent);color:#fff;border:none;padding:20px;font-family:'Bebas Neue',sans-serif;font-size:24px;letter-spacing:4px;cursor:none;position:relative;overflow:hidden;transition:all .3s}
+.checkout-btn::before{content:'';position:absolute;inset:0;background:#fff;transform:translateX(-101%);transition:transform .4s cubic-bezier(.77,0,.175,1)}
+.checkout-btn:hover::before{transform:translateX(0)}
+.checkout-btn:hover{color:var(--black)}
+.checkout-btn span{position:relative;z-index:1}
+.trust-badges{display:flex;justify-content:center;gap:24px;margin-top:16px}
+.trust-badge{display:flex;align-items:center;gap:6px;font-size:11px;color:var(--mid);letter-spacing:1px}
+
+/* ══ ORIGINAL PRODUCT MODAL ══ */
+.modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,.85);z-index:1000;opacity:0;pointer-events:none;transition:opacity .4s;backdrop-filter:blur(8px);display:flex;align-items:center;justify-content:center;padding:20px}
+.modal-overlay.open{opacity:1;pointer-events:all}
+.modal{background:#0f0f0f;width:900px;max-width:100%;max-height:92vh;overflow-y:auto;border:1px solid rgba(255,255,255,.08);display:grid;grid-template-columns:1fr 1fr;animation:modalIn .4s ease;position:relative}
+@keyframes modalIn{from{opacity:0;transform:scale(.96) translateY(20px)}to{opacity:1;transform:none}}
+.modal-img-side{background:#141414;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:40px;position:relative;overflow:hidden;min-height:400px}
+.modal-img-side::before{content:'';position:absolute;bottom:0;left:50%;transform:translateX(-50%);width:300px;height:60px;background:radial-gradient(ellipse,rgba(255,61,0,.3),transparent 70%)}
+.modal-main-img{width:100%;max-height:300px;object-fit:contain;animation:shoeFloat 6s ease-in-out infinite;filter:drop-shadow(0 30px 60px rgba(0,0,0,.8)) drop-shadow(0 5px 20px rgba(255,61,0,.2))}
+.modal-thumbs{display:flex;gap:10px;margin-top:20px}
+.modal-thumb{width:60px;height:60px;background:#1e1e1e;border:1px solid rgba(255,255,255,.1);display:flex;align-items:center;justify-content:center;cursor:none;transition:border-color .2s}
+.modal-thumb.active,.modal-thumb:hover{border-color:var(--accent)}
+.modal-thumb img{width:50px;height:50px;object-fit:contain}
+.modal-close{position:absolute;top:14px;right:14px;width:36px;height:36px;background:rgba(0,0,0,.6);border:1px solid rgba(255,255,255,.1);color:var(--mid);display:flex;align-items:center;justify-content:center;cursor:none;font-size:16px;transition:all .2s;z-index:2}
+.modal-close:hover{border-color:var(--accent);color:var(--accent)}
+.modal-details{padding:44px 40px;overflow-y:auto}
+.modal-brand{font-size:11px;letter-spacing:4px;text-transform:uppercase;color:var(--accent);margin-bottom:10px}
+.modal-name{font-family:'Bebas Neue',sans-serif;font-size:42px;letter-spacing:2px;line-height:1;margin-bottom:8px}
+.modal-type{font-size:12px;letter-spacing:3px;text-transform:uppercase;color:var(--mid);margin-bottom:20px}
+.modal-rating{display:flex;align-items:center;gap:8px;margin-bottom:20px}
+.stars{color:#ff8800;letter-spacing:2px}
+.rating-count{font-size:13px;color:var(--mid)}
+.modal-price-row{display:flex;align-items:center;gap:16px;margin-bottom:24px}
+.modal-price{font-family:'Bebas Neue',sans-serif;font-size:48px;color:var(--accent);letter-spacing:2px;line-height:1}
+.modal-old-price{font-size:20px;color:var(--mid);text-decoration:line-through}
+.modal-disc{font-size:13px;background:rgba(255,61,0,.15);color:var(--accent);padding:4px 12px;font-weight:600}
+.modal-desc{font-size:14px;line-height:1.8;color:var(--mid);margin-bottom:28px;border-left:2px solid rgba(255,61,0,.3);padding-left:16px}
+.select-label{font-size:11px;letter-spacing:3px;text-transform:uppercase;color:var(--white);margin-bottom:14px;display:flex;justify-content:space-between}
+.select-label span{color:var(--mid);font-size:10px}
+.color-select{display:flex;gap:10px;margin-bottom:28px;flex-wrap:wrap}
+.color-swatch{width:32px;height:32px;border-radius:50%;cursor:none;border:2px solid rgba(255,255,255,.15);transition:all .3s;position:relative}
+.color-swatch::after{content:'';position:absolute;inset:-4px;border-radius:50%;border:2px solid transparent;transition:border-color .2s}
+.color-swatch.active::after{border-color:var(--white)}
+.color-swatch:hover{transform:scale(1.2)}
+.size-select{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;margin-bottom:28px}
+.size-btn{background:none;border:1px solid rgba(255,255,255,.12);color:var(--mid);padding:12px;text-align:center;cursor:none;font-family:'Barlow',sans-serif;font-size:13px;letter-spacing:1px;transition:all .2s}
+.size-btn:hover{border-color:var(--accent);color:var(--accent)}
+.size-btn.active{background:var(--accent);border-color:var(--accent);color:#fff}
+.size-btn.oos{opacity:.25;cursor:not-allowed;text-decoration:line-through}
+.qty-section{display:flex;align-items:center;gap:16px;margin-bottom:28px}
+.qty-label{font-size:11px;letter-spacing:3px;text-transform:uppercase;color:var(--white)}
+.qty-ctrl{display:flex;align-items:center;gap:12px;border:1px solid var(--border);padding:2px}
+.qty-ctrl .qty-btn{width:36px;height:36px;border:none;background:none;border-right:1px solid var(--border);color:var(--white)}
+.qty-ctrl .qty-btn:last-child{border-right:none;border-left:1px solid var(--border)}
+.qty-ctrl .qty-val{min-width:40px;text-align:center;font-family:'Bebas Neue',sans-serif;font-size:24px;color:var(--white)}
+.modal-add-btn{width:100%;background:var(--accent);color:#fff;border:none;padding:20px;font-family:'Bebas Neue',sans-serif;font-size:22px;letter-spacing:4px;cursor:none;transition:all .3s;margin-bottom:12px;position:relative;overflow:hidden}
+.modal-add-btn::before{content:'';position:absolute;inset:0;background:#fff;transform:translateX(-101%);transition:transform .4s cubic-bezier(.77,0,.175,1)}
+.modal-add-btn:hover::before{transform:translateX(0)}
+.modal-add-btn:hover{color:var(--black)}
+.modal-add-btn.success{background:var(--success)!important}
+.modal-add-btn span{position:relative;z-index:1}
+.modal-wish-btn{width:100%;background:none;border:1px solid rgba(255,255,255,.15);color:var(--mid);padding:14px;font-family:'Barlow',sans-serif;font-size:12px;letter-spacing:3px;text-transform:uppercase;cursor:none;transition:all .3s}
+.modal-wish-btn:hover{border-color:var(--accent);color:var(--accent)}
+.modal-tags{display:flex;gap:8px;flex-wrap:wrap;margin-top:20px}
+.modal-tag{font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--mid);border:1px solid rgba(255,255,255,.08);padding:5px 12px}
+.size-guide-link{font-size:11px;color:var(--accent);text-decoration:underline;cursor:pointer;text-transform:uppercase;letter-spacing:2px}
+
+/* ══ ORIGINAL PAYMENT MODAL ══ */
+.pay-overlay{position:fixed;inset:0;background:rgba(0,0,0,.9);z-index:1100;opacity:0;pointer-events:none;transition:opacity .4s;backdrop-filter:blur(10px);display:flex;align-items:center;justify-content:center;padding:20px}
+.pay-overlay.open{opacity:1;pointer-events:all}
+.pay-modal{background:#0a0a0a;border:1px solid rgba(255,255,255,.08);width:760px;max-width:100%;max-height:94vh;overflow-y:auto;display:flex;flex-direction:column;animation:modalIn .4s ease;position:relative}
+.pay-header{padding:32px 40px 24px;border-bottom:1px solid var(--border);display:flex;justify-content:space-between;align-items:center;flex-shrink:0}
+.pay-title{font-family:'Bebas Neue',sans-serif;font-size:32px;letter-spacing:4px}
+.pay-secure{display:flex;align-items:center;gap:8px;font-size:11px;color:var(--success);letter-spacing:2px;text-transform:uppercase}
+.pay-close{background:none;border:1px solid var(--border);color:var(--white);width:40px;height:40px;display:flex;align-items:center;justify-content:center;cursor:none;font-size:18px;transition:all .3s}
+.pay-close:hover{border-color:var(--accent);color:var(--accent)}
+.pay-steps{display:flex;padding:0 40px;border-bottom:1px solid var(--border);flex-shrink:0}
+.pay-step{flex:1;padding:20px 0;text-align:center;font-size:11px;letter-spacing:3px;text-transform:uppercase;color:var(--mid);border-bottom:2px solid transparent;transition:all .3s;cursor:default;position:relative}
+.pay-step::after{content:'';position:absolute;bottom:-2px;left:0;right:0;height:2px;background:var(--accent);transform:scaleX(0);transition:transform .4s}
+.pay-step.active{color:var(--white)}
+.pay-step.active::after,.pay-step.done::after{transform:scaleX(1)}
+.pay-step.done{color:var(--success)}
+.pay-step-num{width:28px;height:28px;border:1px solid rgba(255,255,255,.15);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 8px;font-family:'Bebas Neue',sans-serif;font-size:16px;transition:all .3s}
+.pay-step.active .pay-step-num{border-color:var(--accent);color:var(--accent)}
+.pay-step.done .pay-step-num{background:var(--success);border-color:var(--success);color:#fff}
+.pay-body{padding:36px 40px;flex:1}
+.pay-section{margin-bottom:32px}
+.pay-section-title{font-family:'Bebas Neue',sans-serif;font-size:22px;letter-spacing:2px;margin-bottom:20px;display:flex;align-items:center;gap:12px;color:var(--white)}
+.pay-section-title::after{content:'';flex:1;height:1px;background:rgba(255,255,255,.06)}
+.form-grid{display:grid;gap:14px}
+.form-grid.cols2{grid-template-columns:1fr 1fr}
+.form-grid.cols3{grid-template-columns:1fr 1fr 1fr}
+.form-group{display:flex;flex-direction:column;gap:8px}
+.form-label{font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--mid)}
+.form-input{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);color:var(--white);padding:14px 18px;font-family:'Barlow',sans-serif;font-size:14px;outline:none;transition:all .3s;width:100%}
+.form-input:focus{border-color:var(--accent);background:rgba(255,61,0,.04)}
+.form-input::placeholder{color:rgba(138,138,138,.5)}
+.form-input.error{border-color:#ff4444}
+.form-select{background:#0d0d0d;border:1px solid rgba(255,255,255,.1);color:var(--white);padding:14px 18px;font-family:'Barlow',sans-serif;font-size:14px;outline:none;transition:border-color .3s;width:100%;cursor:none;appearance:none;background-image:url("data:image/svg+xml,%3Csvg width='10' height='6' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 0l5 6 5-6z' fill='%238a8a8a'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 16px center}
+.form-select:focus{border-color:var(--accent)}
+.pay-methods{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:28px}
+.pay-method{border:1px solid rgba(255,255,255,.1);padding:16px 12px;text-align:center;cursor:none;transition:all .3s;display:flex;flex-direction:column;align-items:center;gap:8px}
+.pay-method:hover{border-color:rgba(255,61,0,.4)}
+.pay-method.active{border-color:var(--accent);background:rgba(255,61,0,.06)}
+.pay-method-icon{font-size:24px;line-height:1}
+.pay-method-name{font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--mid);transition:color .3s}
+.pay-method.active .pay-method-name{color:var(--white)}
+.card-field-wrap{position:relative}
+.card-icons{position:absolute;right:14px;top:50%;transform:translateY(-50%);display:flex;gap:6px}
+.card-icon-img{height:20px;opacity:.5;font-size:12px;letter-spacing:1px;color:var(--mid)}
+.pay-summary{background:#0d0d0d;border:1px solid var(--border);padding:24px;margin-bottom:28px}
+.pay-summary-title{font-family:'Bebas Neue',sans-serif;font-size:20px;letter-spacing:2px;margin-bottom:16px}
+.pay-summary-item{display:flex;justify-content:space-between;align-items:center;padding:10px 0;border-bottom:1px solid rgba(255,255,255,.04)}
+.pay-summary-item:last-child{border-bottom:none}
+.pay-summary-item-left{display:flex;align-items:center;gap:12px}
+.pay-item-thumb{width:50px;height:50px;background:#181818;display:flex;align-items:center;justify-content:center}
+.pay-item-thumb img{width:42px;height:42px;object-fit:contain}
+.pay-item-name{font-size:14px;font-weight:600}
+.pay-item-meta{font-size:11px;color:var(--mid);text-transform:uppercase;letter-spacing:1px;margin-top:3px}
+.pay-item-price{font-family:'Bebas Neue',sans-serif;font-size:20px;color:var(--accent)}
+.pay-total-section{margin-top:16px;padding-top:16px;border-top:1px solid var(--border)}
+.pay-total-line{display:flex;justify-content:space-between;font-size:14px;color:var(--mid);margin-bottom:8px}
+.pay-total-line.main{font-family:'Bebas Neue',sans-serif;font-size:26px;color:var(--white);letter-spacing:2px;margin-top:12px;padding-top:12px;border-top:1px solid var(--border)}
+.pay-total-line.main .amount{color:var(--accent)}
+.shipping-options{display:grid;gap:12px;margin-bottom:24px}
+.shipping-opt{border:1px solid rgba(255,255,255,.1);padding:16px 20px;cursor:none;transition:all .3s;display:flex;align-items:center;gap:16px}
+.shipping-opt:hover{border-color:rgba(255,61,0,.4)}
+.shipping-opt.active{border-color:var(--accent);background:rgba(255,61,0,.05)}
+.shipping-radio{width:18px;height:18px;border-radius:50%;border:1px solid rgba(255,255,255,.3);position:relative;flex-shrink:0;transition:border-color .2s}
+.shipping-opt.active .shipping-radio{border-color:var(--accent)}
+.shipping-opt.active .shipping-radio::after{content:'';position:absolute;inset:3px;border-radius:50%;background:var(--accent)}
+.shipping-info{flex:1}
+.shipping-name{font-size:14px;font-weight:600;margin-bottom:4px}
+.shipping-desc{font-size:12px;color:var(--mid)}
+.shipping-price{font-family:'Bebas Neue',sans-serif;font-size:20px;color:var(--accent);letter-spacing:1px}
+.pay-footer{padding:24px 40px 32px;border-top:1px solid var(--border);display:flex;gap:16px;flex-shrink:0}
+.pay-back-btn{background:none;border:1px solid var(--border);color:var(--mid);padding:16px 32px;font-family:'Barlow',sans-serif;font-size:12px;letter-spacing:3px;text-transform:uppercase;cursor:none;transition:all .3s;display:flex;align-items:center;gap:8px}
+.pay-back-btn:hover{border-color:var(--white);color:var(--white)}
+.pay-next-btn{flex:1;background:var(--accent);color:#fff;border:none;padding:18px;font-family:'Bebas Neue',sans-serif;font-size:22px;letter-spacing:4px;cursor:none;transition:all .3s;position:relative;overflow:hidden}
+.pay-next-btn::before{content:'';position:absolute;inset:0;background:#fff;transform:translateX(-101%);transition:transform .4s cubic-bezier(.77,0,.175,1)}
+.pay-next-btn:hover::before{transform:translateX(0)}
+.pay-next-btn:hover{color:var(--black)}
+.pay-next-btn span{position:relative;z-index:1}
+.pay-note{font-size:11px;color:var(--mid);text-align:center;margin-top:12px;letter-spacing:1px}
+.success-screen{text-align:center;padding:60px 40px}
+.success-icon{font-size:80px;margin-bottom:24px;animation:bounceIn .6s ease}
+@keyframes bounceIn{0%{transform:scale(0)}60%{transform:scale(1.1)}100%{transform:scale(1)}}
+.success-title{font-family:'Bebas Neue',sans-serif;font-size:64px;letter-spacing:4px;color:var(--success);margin-bottom:16px}
+.success-order{font-family:'Bebas Neue',sans-serif;font-size:24px;letter-spacing:3px;color:var(--mid);margin-bottom:32px}
+.success-msg{font-size:16px;line-height:1.8;color:var(--mid);max-width:440px;margin:0 auto 40px}
+.success-track{display:flex;justify-content:center;gap:0;margin-bottom:40px}
+.track-step{flex:1;text-align:center;max-width:140px}
+.track-line{height:2px;background:var(--border);flex:1;margin-top:14px;position:relative}
+.track-line.done{background:var(--success)}
+.track-dot{width:28px;height:28px;border-radius:50%;border:2px solid var(--border);display:flex;align-items:center;justify-content:center;margin:0 auto 10px;font-size:12px;color:var(--mid)}
+.track-dot.done{border-color:var(--success);color:var(--success);background:rgba(34,197,94,.1)}
+.track-dot.current{border-color:var(--accent);color:var(--accent);animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{box-shadow:0 0 0 0 rgba(255,61,0,.4)}50%{box-shadow:0 0 0 8px rgba(255,61,0,0)}}
+.track-label{font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--mid)}
+.track-label.done{color:var(--success)}
+.toast{position:fixed;bottom:30px;right:30px;background:#0d0d0d;border:1px solid rgba(255,255,255,.08);color:var(--white);padding:16px 24px;font-size:13px;letter-spacing:2px;text-transform:uppercase;z-index:9500;transform:translateY(100px);opacity:0;transition:all .4s cubic-bezier(.4,0,.2,1);display:flex;align-items:center;gap:12px}
+.toast.show{transform:translateY(0);opacity:1}
+.toast-icon{font-size:20px}
+.scroll-indicator{position:absolute;bottom:40px;left:60px;display:flex;flex-direction:column;align-items:flex-start;gap:8px;opacity:0;animation:fadeUp .8s 1.2s forwards}
+.scroll-line{width:1px;height:60px;background:linear-gradient(to bottom,var(--accent),transparent);animation:scrollLine 2s ease-in-out infinite}
+@keyframes scrollLine{0%{transform:scaleY(0);transform-origin:top}50%{transform:scaleY(1);transform-origin:top}51%{transform:scaleY(1);transform-origin:bottom}100%{transform:scaleY(0);transform-origin:bottom}}
+.scroll-text{font-size:10px;letter-spacing:4px;text-transform:uppercase;color:var(--mid);writing-mode:vertical-rl}
+
+/* ══ CUSTOMER AUTH PAGE ══ */
+#customerAuthPage{display:none;position:fixed;inset:0;z-index:6000;overflow-y:auto;}
+#customerAuthPage.show{display:block;}
+.ca-wrap{min-height:100vh;display:grid;grid-template-columns:1fr 1fr;}
+.ca-left{background:#050505;position:relative;overflow:hidden;display:flex;flex-direction:column;justify-content:center;padding:60px 70px;}
+.ca-left-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(255,61,0,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(255,61,0,.05) 1px,transparent 1px);background-size:50px 50px;}
+.ca-left-glow{position:absolute;bottom:-100px;left:-100px;width:500px;height:500px;background:radial-gradient(circle,rgba(255,61,0,.08) 0%,transparent 70%);}
+.ca-left-content{position:relative;z-index:2;}
+.ca-brand{font-family:'Bebas Neue',sans-serif;font-size:32px;letter-spacing:10px;color:var(--accent);margin-bottom:20px;}
+.ca-tagline{font-family:'Bebas Neue',sans-serif;font-size:clamp(36px,4vw,56px);letter-spacing:3px;line-height:1;color:#f5f2ee;margin-bottom:18px;}
+.ca-tagline em{font-style:normal;color:var(--accent);}
+.ca-desc{font-size:14px;line-height:1.8;color:rgba(255,255,255,.35);max-width:340px;margin-bottom:44px;}
+.ca-features{display:flex;flex-direction:column;gap:14px;}
+.ca-feat{display:flex;align-items:center;gap:12px;}
+.ca-feat-line{width:18px;height:2px;background:var(--accent);flex-shrink:0;}
+.ca-feat-text{font-size:13px;color:rgba(255,255,255,.4);letter-spacing:1px;}
+.ca-feat-text strong{color:#f5f2ee;}
+.ca-right{background:#0d0d0d;display:flex;align-items:center;justify-content:center;padding:60px 70px;position:relative;}
+.ca-back{position:absolute;top:24px;left:24px;display:flex;align-items:center;gap:8px;background:none;border:1px solid rgba(255,255,255,.1);color:var(--mid);padding:7px 16px;font-family:'Barlow',sans-serif;font-size:10px;letter-spacing:3px;text-transform:uppercase;cursor:pointer;transition:all .2s;}
+.ca-back:hover{border-color:var(--accent);color:var(--accent);}
+.ca-form-box{width:100%;max-width:400px;}
+.ca-form-title{font-family:'Bebas Neue',sans-serif;font-size:36px;letter-spacing:3px;color:var(--white);margin-bottom:5px;}
+.ca-form-sub{font-size:13px;color:var(--mid);margin-bottom:26px;letter-spacing:1px;}
+.ca-tabs{display:grid;grid-template-columns:1fr 1fr;gap:2px;margin-bottom:24px;}
+.ca-tab{padding:10px;text-align:center;font-family:'Bebas Neue',sans-serif;font-size:16px;letter-spacing:3px;cursor:pointer;transition:all .3s;color:var(--mid);border:none;background:rgba(255,255,255,.04);}
+.ca-tab.active{background:var(--accent);color:#fff;}
+.ca-field{margin-bottom:14px;}
+.ca-label{font-size:9px;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:var(--mid);margin-bottom:7px;display:block;}
+.ca-input-wrap{position:relative;}
+.ca-inp{width:100%;padding:12px 15px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);font-family:'Barlow',sans-serif;font-size:13px;color:var(--white);outline:none;transition:border-color .3s;}
+.ca-inp:focus{border-color:var(--accent);}
+.ca-inp::placeholder{color:var(--mid);}
+.ca-inp.err{border-color:#ff4444;}
+.ca-eye{position:absolute;right:12px;top:50%;transform:translateY(-50%);background:none;border:none;cursor:pointer;font-size:13px;color:var(--mid);}
+.ca-err{font-size:10px;color:#ff4444;margin-top:3px;display:block;min-height:12px;letter-spacing:1px;}
+.ca-row2{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+.ca-strength{margin-top:5px;}
+.ca-strength-bar{height:2px;background:rgba(255,255,255,.08);overflow:hidden;}
+.ca-strength-fill{height:100%;transition:all .4s;width:0;}
+.ca-strength-txt{font-size:9px;margin-top:3px;letter-spacing:2px;text-transform:uppercase;color:var(--mid);}
+.ca-forgot{text-align:right;margin-top:-8px;margin-bottom:14px;}
+.ca-forgot a{font-size:11px;color:var(--accent);cursor:pointer;text-decoration:none;letter-spacing:1px;}
+.ca-submit{width:100%;padding:16px;background:var(--accent);color:#fff;border:none;font-family:'Bebas Neue',sans-serif;font-size:20px;letter-spacing:4px;cursor:pointer;transition:all .3s;margin-bottom:12px;}
+.ca-submit:hover{background:#cc2e00;}
+.ca-divider{display:flex;align-items:center;gap:10px;margin:10px 0;}
+.ca-divider::before,.ca-divider::after{content:'';flex:1;height:1px;background:rgba(255,255,255,.08);}
+.ca-divider span{font-size:9px;color:var(--mid);letter-spacing:3px;text-transform:uppercase;}
+.ca-social{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:14px;}
+.ca-social-btn{padding:10px;background:none;border:1px solid rgba(255,255,255,.1);color:var(--white);font-family:'Barlow',sans-serif;font-size:11px;cursor:pointer;transition:all .2s;display:flex;align-items:center;justify-content:center;gap:6px;letter-spacing:2px;}
+.ca-social-btn:hover{border-color:var(--accent);color:var(--accent);}
+.ca-switch{text-align:center;font-size:12px;color:var(--mid);letter-spacing:1px;}
+.ca-switch a{color:var(--accent);cursor:pointer;}
+.ca-gen-err{background:rgba(255,61,0,.08);border:1px solid rgba(255,61,0,.2);padding:10px 14px;font-size:12px;color:var(--accent);margin-bottom:12px;display:none;letter-spacing:1px;}
+.ca-gen-err.show{display:block;}
+.ca-terms{display:flex;align-items:flex-start;gap:8px;margin-bottom:14px;cursor:pointer;}
+.ca-terms input{accent-color:var(--accent);margin-top:2px;flex-shrink:0;}
+.ca-terms span{font-size:11px;color:var(--mid);line-height:1.5;letter-spacing:1px;}
+.ca-terms a{color:var(--accent);}
+.ca-success-wrap{text-align:center;padding:20px 0;}
+.ca-success-icon{font-size:52px;margin-bottom:18px;animation:bounceIn .5s ease;}
+.ca-success-title{font-family:'Bebas Neue',sans-serif;font-size:36px;letter-spacing:4px;margin-bottom:10px;color:var(--white);}
+.ca-success-sub{font-size:13px;color:var(--mid);line-height:1.7;margin-bottom:22px;}
+
+/* ══ CUSTOMER PROFILE PANEL ══ */
+#customerProfilePanel{position:fixed;inset:0;background:rgba(0,0,0,.75);backdrop-filter:blur(8px);z-index:6500;display:none;align-items:center;justify-content:center;padding:20px;}
+#customerProfilePanel.open{display:flex;}
+.cp-modal{background:#0f0f0f;border:1px solid var(--border);width:500px;max-width:100%;max-height:88vh;overflow-y:auto;animation:modalIn .4s ease;position:relative;padding:32px;}
+.cp-close{position:absolute;top:14px;right:14px;width:32px;height:32px;background:none;border:1px solid var(--border);display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:14px;color:var(--mid);transition:all .2s;}
+.cp-close:hover{background:var(--accent);color:#fff;border-color:var(--accent);}
+.cp-hdr{display:flex;align-items:center;gap:14px;margin-bottom:22px;padding-bottom:22px;border-bottom:1px solid var(--border);}
+.cp-avatar{width:56px;height:56px;background:var(--accent);display:flex;align-items:center;justify-content:center;font-family:'Bebas Neue',sans-serif;font-size:26px;font-weight:700;color:#fff;}
+.cp-name{font-family:'Bebas Neue',sans-serif;font-size:22px;letter-spacing:2px;color:var(--white);}
+.cp-email{font-size:12px;color:var(--mid);margin-top:2px;}
+.cp-badge{display:inline-flex;align-items:center;gap:4px;border:1px solid var(--accent);color:var(--accent);font-size:9px;font-weight:600;letter-spacing:2px;text-transform:uppercase;padding:2px 8px;margin-top:5px;}
+.cp-tabs{display:flex;gap:0;border-bottom:1px solid var(--border);margin-bottom:20px;}
+.cp-tab{padding:9px 18px;font-size:10px;font-weight:600;letter-spacing:3px;text-transform:uppercase;cursor:pointer;border:none;background:transparent;color:var(--mid);border-bottom:2px solid transparent;margin-bottom:-1px;transition:all .2s;font-family:'Barlow',sans-serif;}
+.cp-tab.active{color:var(--accent);border-bottom-color:var(--accent);}
+.cp-panel{display:none;}
+.cp-panel.active{display:block;}
+.cp-order-card{background:rgba(255,61,0,.05);border:1px solid rgba(255,61,0,.15);padding:14px;margin-bottom:10px;}
+.cp-order-id{font-family:'Bebas Neue',sans-serif;font-size:14px;color:var(--accent);letter-spacing:2px;}
+.cp-order-meta{font-size:11px;color:var(--mid);margin-top:3px;letter-spacing:1px;}
+.cp-order-row{display:flex;justify-content:space-between;align-items:center;margin-top:7px;}
+.cp-order-total{font-family:'Bebas Neue',sans-serif;font-size:18px;color:var(--white);}
+.s-badge{display:inline-flex;padding:2px 9px;font-size:9px;font-weight:600;letter-spacing:2px;text-transform:uppercase;}
+.s-delivered{background:rgba(34,197,94,.1);color:var(--success);}
+.s-pending{background:rgba(255,61,0,.1);color:var(--accent);}
+.s-shipped{background:rgba(52,152,219,.1);color:#3498db;}
+.s-cancelled{background:rgba(255,68,68,.1);color:#ff4444;}
+.cp-profile-grid{display:grid;gap:13px;}
+.cp-prof-label{font-size:9px;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:var(--mid);margin-bottom:6px;display:block;}
+.cp-prof-inp{width:100%;padding:11px 13px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);font-family:'Barlow',sans-serif;font-size:13px;color:var(--white);outline:none;transition:border-color .3s;}
+.cp-prof-inp:focus{border-color:var(--accent);}
+.cp-save-btn{width:100%;padding:13px;background:var(--accent);color:#fff;border:none;font-family:'Bebas Neue',sans-serif;font-size:18px;letter-spacing:3px;cursor:pointer;transition:all .3s;}
+.cp-save-btn:hover{background:#cc2e00;}
+.cp-logout-btn{width:100%;padding:12px;background:none;border:1px solid rgba(255,68,68,.25);color:#ff4444;font-family:'Barlow',sans-serif;font-size:11px;letter-spacing:3px;text-transform:uppercase;cursor:pointer;transition:all .2s;margin-top:14px;}
+.cp-logout-btn:hover{background:rgba(255,68,68,.06);}
+
+/* ══ ADMIN AUTH OVERLAY ══ */
+.admin-auth-overlay{position:fixed;inset:0;background:rgba(0,0,0,.92);backdrop-filter:blur(16px);z-index:7000;display:none;align-items:center;justify-content:center;padding:20px;}
+.admin-auth-overlay.open{display:flex;}
+.aac{background:#111;border:1px solid var(--border);width:440px;max-width:100%;padding:44px;animation:modalIn .4s ease;position:relative;}
+.aac-logo{font-family:'Bebas Neue',sans-serif;font-size:32px;letter-spacing:10px;text-align:center;color:var(--accent);margin-bottom:3px;}
+.aac-sub{text-align:center;font-size:10px;letter-spacing:4px;text-transform:uppercase;color:var(--mid);margin-bottom:28px;}
+.aac-field{margin-bottom:14px;}
+.aac-label{font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--mid);margin-bottom:7px;display:block;}
+.aac-inp-wrap{position:relative;}
+.aac-inp{width:100%;padding:12px 15px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);font-family:'Barlow',sans-serif;font-size:13px;color:var(--white);outline:none;transition:border-color .3s;}
+.aac-inp:focus{border-color:var(--accent);}
+.aac-inp::placeholder{color:var(--mid);}
+.aac-inp.err{border-color:#ff4444;}
+.aac-eye{position:absolute;right:11px;top:50%;transform:translateY(-50%);background:none;border:none;cursor:pointer;font-size:13px;color:var(--mid);}
+.aac-gen-err{background:rgba(255,61,0,.08);border:1px solid rgba(255,61,0,.2);padding:9px 13px;font-size:12px;color:var(--accent);margin-bottom:12px;display:none;letter-spacing:1px;}
+.aac-gen-err.show{display:block;}
+.aac-submit{width:100%;padding:16px;background:var(--accent);color:#fff;border:none;font-family:'Bebas Neue',sans-serif;font-size:20px;letter-spacing:4px;cursor:pointer;transition:all .3s;margin-top:4px;}
+.aac-submit:hover{background:#cc2e00;}
+.aac-close{position:absolute;top:13px;right:13px;width:30px;height:30px;background:none;border:1px solid var(--border);display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:13px;color:var(--mid);transition:all .2s;}
+.aac-close:hover{background:var(--accent);color:#fff;border-color:var(--accent);}
+
+/* ══ ADMIN PAGE ══ */
+#adminPage{display:none;min-height:100vh;background:#0a0a0a;}
+#adminPage.show{display:block;}
+.admin-nav{background:rgba(10,10,10,.92);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);padding:0 36px;height:68px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:500;}
+.admin-logo{font-family:'Bebas Neue',sans-serif;font-size:22px;letter-spacing:6px;color:var(--white);}
+.admin-logo small{font-family:'Barlow',sans-serif;font-size:9px;letter-spacing:4px;text-transform:uppercase;color:var(--accent);margin-left:10px;}
+.admin-nav-r{display:flex;align-items:center;gap:10px;}
+.admin-chip{display:flex;align-items:center;gap:9px;background:rgba(255,61,0,.08);border:1px solid rgba(255,61,0,.2);padding:4px 13px 4px 5px;}
+.admin-chip-av{width:26px;height:26px;background:var(--accent);display:flex;align-items:center;justify-content:center;font-family:'Bebas Neue',sans-serif;font-size:14px;font-weight:700;color:#fff;}
+.admin-chip-nm{font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--white);}
+.admin-btn-sm{padding:7px 16px;background:none;border:1px solid var(--border);color:var(--mid);font-family:'Barlow',sans-serif;font-size:10px;letter-spacing:3px;text-transform:uppercase;cursor:pointer;transition:all .2s;}
+.admin-btn-sm:hover{border-color:var(--accent);color:var(--accent);}
+.admin-btn-sm.danger:hover{border-color:#ff4444;color:#ff4444;}
+.admin-layout{display:grid;grid-template-columns:210px 1fr;min-height:calc(100vh - 68px);}
+.admin-sidebar{background:rgba(255,255,255,.02);border-right:1px solid var(--border);padding:18px 10px;}
+.sb-label{font-size:8px;letter-spacing:4px;text-transform:uppercase;color:var(--mid);padding:0 10px;margin:14px 0 7px;}
+.sb-btn{width:100%;display:flex;align-items:center;gap:9px;padding:9px 11px;border:none;background:transparent;color:var(--mid);font-family:'Barlow',sans-serif;font-size:12px;cursor:pointer;transition:all .2s;text-align:left;letter-spacing:1px;}
+.sb-btn:hover{background:rgba(255,61,0,.08);color:var(--white);}
+.sb-btn.active{background:rgba(255,61,0,.1);color:var(--accent);border-left:2px solid var(--accent);}
+.sb-btn.danger:hover{background:rgba(255,68,68,.06);color:#ff4444;}
+.sb-icon{font-size:14px;flex-shrink:0;}
+.admin-content{padding:28px 32px;overflow-y:auto;}
+.admin-panel{display:none;}
+.admin-panel.active{display:block;}
+.a-sublabel{font-size:9px;letter-spacing:5px;text-transform:uppercase;color:var(--accent);margin-bottom:6px;}
+.a-title{font-family:'Bebas Neue',sans-serif;font-size:42px;letter-spacing:4px;color:var(--white);margin-bottom:24px;}
+.stat-cards{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:24px;}
+.stat-card{background:#111;border:1px solid var(--border);padding:20px 18px;position:relative;overflow:hidden;transition:border-color .3s;}
+.stat-card:hover{border-color:var(--accent);}
+.stat-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:var(--accent);opacity:.5;}
+.sc-label{font-size:9px;letter-spacing:4px;text-transform:uppercase;color:var(--mid);margin-bottom:9px;}
+.sc-num{font-family:'Bebas Neue',sans-serif;font-size:32px;letter-spacing:2px;color:var(--white);margin-bottom:4px;}
+.sc-change{font-size:10px;color:var(--success);letter-spacing:1px;}
+.sc-icon{position:absolute;top:14px;right:14px;font-size:26px;opacity:.1;}
+.chart-row{display:grid;grid-template-columns:2fr 1fr;gap:14px;margin-bottom:24px;}
+.chart-card{background:#111;border:1px solid var(--border);padding:22px;}
+.chart-title{font-family:'Bebas Neue',sans-serif;font-size:20px;letter-spacing:3px;color:var(--white);margin-bottom:18px;}
+.bar-chart{display:flex;align-items:flex-end;gap:7px;height:170px;}
+.bar-group{flex:1;display:flex;flex-direction:column;align-items:center;gap:4px;height:100%;justify-content:flex-end;}
+.bar{width:100%;background:rgba(255,61,0,.2);transition:background .2s;cursor:pointer;}
+.bar:hover{background:var(--accent);}
+.bar-lbl{font-size:8px;color:var(--mid);letter-spacing:2px;text-transform:uppercase;}
+.bar-val{font-size:9px;color:var(--accent);font-family:'Bebas Neue',sans-serif;}
+.donut-wrap{display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%;}
+.donut-legend{margin-top:14px;display:flex;flex-direction:column;gap:6px;width:100%;}
+.legend-row{display:flex;align-items:center;gap:7px;font-size:11px;color:var(--mid);}
+.legend-dot{width:7px;height:7px;flex-shrink:0;}
+.admin-tbl-card{background:#111;border:1px solid var(--border);overflow:hidden;}
+.admin-tbl-hd{padding:16px 20px;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;}
+.admin-tbl-title{font-family:'Bebas Neue',sans-serif;font-size:20px;letter-spacing:3px;color:var(--white);}
+.admin-search{background:rgba(255,255,255,.04);border:1px solid var(--border);color:var(--white);padding:7px 12px;font-family:'Barlow',sans-serif;font-size:12px;outline:none;width:200px;transition:border-color .3s;}
+.admin-search:focus{border-color:var(--accent);}
+.admin-search::placeholder{color:var(--mid);}
+.tbl-wrap{overflow-x:auto;}
+table{width:100%;border-collapse:collapse;}
+thead tr{background:rgba(255,61,0,.06);}
+th{padding:10px 16px;text-align:left;font-size:8px;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:var(--mid);white-space:nowrap;}
+tbody tr{border-top:1px solid rgba(255,255,255,.04);transition:background .2s;}
+tbody tr:hover{background:rgba(255,61,0,.03);}
+td{padding:11px 16px;font-size:12px;color:var(--white);vertical-align:middle;}
+.td-id{font-family:'Bebas Neue',sans-serif;font-size:13px;color:var(--accent);letter-spacing:1px;}
+.td-act{padding:4px 10px;background:none;border:1px solid var(--border);color:var(--mid);font-family:'Barlow',sans-serif;font-size:10px;letter-spacing:2px;cursor:pointer;transition:all .2s;}
+.td-act:hover{border-color:var(--accent);color:var(--accent);}
+.td-act.del:hover{border-color:#ff4444;color:#ff4444;}
+.pm-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:22px;}
+.pm-add-btn{padding:10px 26px;background:var(--accent);color:#fff;border:none;font-family:'Bebas Neue',sans-serif;font-size:16px;letter-spacing:3px;cursor:pointer;transition:all .3s;}
+.pm-add-btn:hover{background:#cc2e00;}
+.pm-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;}
+.pm-card{background:#111;border:1px solid var(--border);overflow:hidden;transition:border-color .3s;}
+.pm-card:hover{border-color:var(--accent);}
+.pm-img{aspect-ratio:1;background:#141414;overflow:hidden;position:relative;}
+.pm-img img{width:100%;height:100%;object-fit:contain;}
+.pm-body{padding:12px;}
+.pm-name{font-family:'Bebas Neue',sans-serif;font-size:18px;letter-spacing:2px;color:var(--white);margin-bottom:3px;}
+.pm-price{font-family:'Bebas Neue',sans-serif;font-size:20px;color:var(--accent);margin-bottom:10px;}
+.pm-acts{display:flex;gap:5px;}
+.pm-edit-btn{flex:1;padding:7px;background:none;border:1px solid var(--border);color:var(--mid);font-family:'Barlow',sans-serif;font-size:10px;letter-spacing:2px;text-transform:uppercase;cursor:pointer;transition:all .2s;}
+.pm-edit-btn:hover{border-color:var(--accent);color:var(--accent);}
+.pm-del-btn{padding:7px 10px;background:none;border:1px solid var(--border);color:var(--mid);font-size:10px;cursor:pointer;transition:all .2s;}
+.pm-del-btn:hover{border-color:#ff4444;color:#ff4444;}
+
+/* ══ PRODUCT EDITOR ══ */
+.prod-edit-overlay{position:fixed;inset:0;background:rgba(0,0,0,.88);backdrop-filter:blur(10px);z-index:8000;display:none;align-items:center;justify-content:center;padding:20px;}
+.prod-edit-overlay.open{display:flex;}
+.pem{background:#111;border:1px solid var(--border);width:740px;max-width:100%;max-height:92vh;overflow-y:auto;animation:modalIn .4s ease;position:relative;}
+.pem-hdr{padding:22px 28px 16px;border-bottom:1px solid var(--border);display:flex;justify-content:space-between;align-items:center;}
+.pem-title{font-family:'Bebas Neue',sans-serif;font-size:26px;letter-spacing:4px;color:var(--white);}
+.pem-close-btn{width:30px;height:30px;background:none;border:1px solid var(--border);display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:13px;color:var(--mid);transition:all .2s;}
+.pem-close-btn:hover{background:var(--accent);color:#fff;border-color:var(--accent);}
+.pem-body{padding:22px 28px 28px;}
+.pem-sec-title{font-size:9px;letter-spacing:4px;text-transform:uppercase;color:var(--accent);margin-bottom:12px;margin-top:20px;display:flex;align-items:center;gap:10px;}
+.pem-sec-title::after{content:'';flex:1;height:1px;background:rgba(255,61,0,.2);}
+.pem-grid{display:grid;gap:12px;}
+.pem-grid.two{grid-template-columns:1fr 1fr;}
+.pem-label{font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--mid);margin-bottom:6px;display:block;}
+.pem-inp{width:100%;padding:11px 13px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);font-family:'Barlow',sans-serif;font-size:13px;color:var(--white);outline:none;transition:border-color .3s;}
+.pem-inp:focus{border-color:var(--accent);}
+.pem-inp::placeholder{color:var(--mid);}
+.pem-select{appearance:none;background-image:url("data:image/svg+xml,%3Csvg width='10' height='6' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 0l5 6 5-6z' fill='%238a8a8a'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 11px center;padding-right:30px;}
+.pem-textarea{resize:vertical;min-height:70px;font-family:'Barlow',sans-serif;}
+.size-chk-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:7px;}
+.sz-item{display:flex;flex-direction:column;gap:4px;}
+.sz-lbl{font-family:'Bebas Neue',sans-serif;font-size:14px;letter-spacing:1px;text-align:center;padding:8px 5px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);cursor:pointer;transition:all .2s;user-select:none;color:var(--mid);}
+.sz-lbl.sel{background:rgba(255,61,0,.12);border-color:var(--accent);color:var(--accent);}
+.sz-qty{padding:6px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);color:var(--white);font-family:'Barlow',sans-serif;font-size:11px;outline:none;text-align:center;width:100%;}
+.sz-qty:focus{border-color:var(--accent);}
+.img-url-grp{display:flex;flex-direction:column;gap:9px;}
+.img-url-row{display:grid;grid-template-columns:46px 1fr;gap:9px;align-items:center;}
+.img-prev{width:46px;height:46px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);overflow:hidden;display:flex;align-items:center;justify-content:center;font-size:16px;}
+.img-prev img{width:100%;height:100%;object-fit:cover;}
+.pem-submit{width:100%;padding:16px;background:var(--accent);color:#fff;border:none;font-family:'Bebas Neue',sans-serif;font-size:20px;letter-spacing:4px;cursor:pointer;transition:all .3s;margin-top:10px;}
+.pem-submit:hover{background:#cc2e00;}
+
+/* ══ MOBILE ══ */
+@media(max-width:768px){
+  nav{padding:16px 24px}.hero-content{padding:0 24px}.shoe-showcase{display:none}
+  .products-grid{grid-template-columns:repeat(2,1fr)}.section{padding:80px 24px}
+  .stat{padding:30px 24px}.features{grid-template-columns:1fr}.cart-drawer{width:100%}
+  .modal{grid-template-columns:1fr}.modal-img-side{min-height:240px}.pay-modal{width:100%}
+  .form-grid.cols2,.form-grid.cols3{grid-template-columns:1fr}.pay-methods{grid-template-columns:repeat(2,1fr)}
+  .pay-footer{flex-direction:column}.admin-layout{grid-template-columns:1fr}.admin-sidebar{display:none}
+  .ca-wrap{grid-template-columns:1fr}.ca-left{display:none}.ca-right{padding:40px 24px;min-height:100vh}
+  .ca-row2{grid-template-columns:1fr}.pem-grid.two{grid-template-columns:1fr}.stat-cards{grid-template-columns:1fr 1fr}
+  .pm-grid{grid-template-columns:1fr 1fr}.chart-row{grid-template-columns:1fr}.nav-right{gap:6px}
+}
+</style>
+</head>
+<body>
+
+<!-- ══ CURSOR ══ -->
+<div class="cursor" id="cursor"></div>
+<div class="cursor-ring" id="cursorRing"></div>
+
+<!-- ══ TOAST ══ -->
+<div class="toast" id="toast"><span class="toast-icon" id="toastIcon">✓</span><span id="toastMsg">Added to cart</span></div>
+
+<!-- ════════════════════════════════════════
+     STORE PAGE
+════════════════════════════════════════ -->
+<div id="storePage">
+
+<!-- NAVBAR -->
+<nav>
+  <a class="logo" href="#">STRIDE</a>
+  <ul class="nav-links">
+    <li><a href="#collection">Collection</a></li>
+    <li><a href="#running">Running</a></li>
+    <li><a href="#lifestyle">Lifestyle</a></li>
+    <li><a href="#about">About</a></li>
+  </ul>
+  <div class="nav-right">
+    <div class="theme-toggle-btn" id="themeToggle" title="Toggle theme">
+      <div class="theme-knob" id="themeKnob">🌙</div>
+    </div>
+    <div id="navGuest" style="display:flex;gap:8px">
+      <button class="nav-cust-btn" onclick="openCustomerAuth('login')">Login</button>
+      <button class="nav-cust-btn filled" onclick="openCustomerAuth('signup')">Sign Up</button>
+    </div>
+    <div class="nav-logged-chip" id="navLoggedIn" onclick="openCustomerProfile()">
+      <div class="nav-chip-avatar" id="navCustInitial">U</div>
+      <span class="nav-chip-name" id="navCustName">User</span>
+    </div>
+    <button class="nav-admin-gear" onclick="openAdminAuth()" title="Admin Panel">⚙</button>
+    <button class="nav-cart" onclick="openCart()">🛒 Cart <span class="cart-badge" id="cartBadge">0</span></button>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-number">01</div>
+  <div class="hero-content">
+    <p class="hero-tag">2025 Collection — Limited Edition</p>
+    <h1 class="hero-title">Beyond<br><span>Limits</span></h1>
+    <p class="hero-sub">Engineered for those who refuse to stop. Precision-crafted performance footwear that moves with you.</p>
+    <div class="hero-cta">
+      <a href="#collection" class="btn-primary"><span>Explore Now</span></a>
+      <button class="btn-ghost">Watch Film</button>
+    </div>
+    <!-- COUNTDOWN -->
+    <div class="hero-countdown">
+      <div class="hcd-item"><div class="hcd-num" id="cd-h">08</div><div class="hcd-label">Hours</div></div>
+      <div class="hcd-sep">:</div>
+      <div class="hcd-item"><div class="hcd-num" id="cd-m">34</div><div class="hcd-label">Mins</div></div>
+      <div class="hcd-sep">:</div>
+      <div class="hcd-item"><div class="hcd-num" id="cd-s">00</div><div class="hcd-label">Secs</div></div>
+      <span class="hcd-tag">Drop Ends</span>
+    </div>
+  </div>
+  <div class="shoe-showcase">
+    <div class="shoe-3d-container">
+      <svg class="shoe-svg" viewBox="0 0 600 350" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <linearGradient id="soleGrad" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#ff3d00"/><stop offset="100%" style="stop-color:#c23000"/></linearGradient>
+          <linearGradient id="upperGrad" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#e8e2d9"/><stop offset="60%" style="stop-color:#d4cdc4"/><stop offset="100%" style="stop-color:#b8b0a6"/></linearGradient>
+          <linearGradient id="middleGrad" x1="0%" y1="0%" x2="0%" y2="100%"><stop offset="0%" style="stop-color:#2a2a2a"/><stop offset="100%" style="stop-color:#111"/></linearGradient>
+          <filter id="shadow"><feDropShadow dx="0" dy="10" stdDeviation="15" flood-color="rgba(0,0,0,0.6)"/></filter>
+        </defs>
+        <ellipse cx="300" cy="330" rx="240" ry="18" fill="url(#soleGrad)" opacity="0.9"/>
+        <path d="M 80 290 Q 60 285 60 275 L 65 255 Q 70 245 100 242 L 480 238 Q 540 238 545 252 L 548 270 Q 550 285 530 292 Z" fill="url(#middleGrad)"/>
+        <path d="M 80 290 Q 55 280 50 265 L 53 250 Q 60 238 90 238 L 100 242 L 65 255 Z" fill="#1a1a1a"/>
+        <path d="M 90 240 Q 120 140 180 110 Q 240 82 320 78 Q 400 75 440 95 Q 480 112 500 150 Q 520 185 530 238 Z" fill="url(#upperGrad)" filter="url(#shadow)"/>
+        <path d="M 200 220 Q 280 190 400 200 Q 450 205 510 225" stroke="rgba(255,61,0,0.6)" stroke-width="3" fill="none" stroke-linecap="round"/>
+        <line x1="220" y1="105" x2="420" y2="100" stroke="white" stroke-width="2.5" opacity="0.7"/>
+        <line x1="230" y1="115" x2="430" y2="110" stroke="white" stroke-width="2" opacity="0.5"/>
+        <line x1="238" y1="125" x2="438" y2="120" stroke="white" stroke-width="2" opacity="0.4"/>
+        <text x="340" y="175" font-family="Arial" font-weight="bold" font-size="11" fill="rgba(255,61,0,0.5)" letter-spacing="4" transform="rotate(-5, 340, 175)">STRIDE</text>
+        <path d="M 68 200 Q 62 215 60 232 L 75 238 Q 72 218 78 204 Z" fill="rgba(255,61,0,0.8)"/>
+      </svg>
+      <div class="shoe-glow"></div>
+    </div>
+  </div>
+  <div class="scroll-indicator"><div class="scroll-line"></div><span class="scroll-text">Scroll</span></div>
+</section>
+
+<!-- STATS -->
+<div class="stats-bar">
+  <div class="stat reveal"><div class="stat-num">50<span>K+</span></div><div class="stat-label">Happy Athletes</div></div>
+  <div class="stat reveal"><div class="stat-num">48<span>h</span></div><div class="stat-label">Delivery Time</div></div>
+  <div class="stat reveal"><div class="stat-num">5<span>★</span></div><div class="stat-label">Average Rating</div></div>
+  <div class="stat reveal"><div class="stat-num">50<span>+</span></div><div class="stat-label">Silhouettes</div></div>
+</div>
+
+<!-- MARQUEE -->
+<div class="marquee-section">
+  <div class="marquee-track">
+    <span class="marquee-item">PERFORMANCE</span><span class="marquee-item" style="color:#ff3d00">✦</span>
+    <span class="marquee-item">STYLE</span><span class="marquee-item" style="color:#ff3d00">✦</span>
+    <span class="marquee-item">COMFORT</span><span class="marquee-item" style="color:#ff3d00">✦</span>
+    <span class="marquee-item">STRIDE</span><span class="marquee-item" style="color:#ff3d00">✦</span>
+    <span class="marquee-item">PERFORMANCE</span><span class="marquee-item" style="color:#ff3d00">✦</span>
+    <span class="marquee-item">STYLE</span><span class="marquee-item" style="color:#ff3d00">✦</span>
+    <span class="marquee-item">COMFORT</span><span class="marquee-item" style="color:#ff3d00">✦</span>
+    <span class="marquee-item">STRIDE</span><span class="marquee-item" style="color:#ff3d00">✦</span>
+  </div>
+</div>
+
+<!-- COLLECTION -->
+<section class="section" id="collection">
+  <div class="section-header reveal">
+    <h2 class="section-title">New<br><em>Arrivals</em></h2>
+    <a href="#" class="section-link">View all</a>
+  </div>
+  <div class="filter-bar reveal">
+    <span class="filter-label">Filter:</span>
+    <button class="filter-btn active" data-filter="all">All</button>
+    <button class="filter-btn" data-filter="running">Running</button>
+    <button class="filter-btn" data-filter="lifestyle">Lifestyle</button>
+    <button class="filter-btn" data-filter="trail">Trail</button>
+    <button class="filter-btn" data-filter="performance">Performance</button>
+    <button class="filter-btn" data-filter="formal">Formal</button>
+  </div>
+  <div class="products-grid" id="productsGrid"></div>
+</section>
+
+<!-- FEATURES -->
+<section class="section" style="padding-top:0" id="about">
+  <div class="features">
+    <div class="feature-card reveal"><span class="feature-icon">⚡</span><h3 class="feature-title">Ultralight<br>Construction</h3><p class="feature-desc">Our proprietary foam compound reduces weight by 40% while maintaining structural integrity under extreme load.</p></div>
+    <div class="feature-card reveal"><span class="feature-icon">🧬</span><h3 class="feature-title">Bio-Adaptive<br>Fit System</h3><p class="feature-desc">Shape-memory lattice adapts to your unique foot geometry in three wears — a custom fit that improves over time.</p></div>
+    <div class="feature-card reveal"><span class="feature-icon">♻</span><h3 class="feature-title">Sustainable<br>Materials</h3><p class="feature-desc">72% recycled content across our range. Every shoe prevents 0.8kg of plastic from entering ocean ecosystems.</p></div>
+    <div class="feature-card reveal"><span class="feature-icon">🛡</span><h3 class="feature-title">Lifetime<br>Guarantee</h3><p class="feature-desc">We stand behind every pair for life. Manufacturing defects are covered — no questions, no receipts, no limits.</p></div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section">
+  <div class="cta-bg"></div>
+  <h2 class="cta-title reveal">First to<br><em>Know</em></h2>
+  <p class="cta-sub reveal">Join 40,000+ athletes for early access to drops, exclusive collabs, and members-only pricing.</p>
+  <div class="cta-form reveal">
+    <input type="email" class="cta-input" placeholder="Your email address">
+    <button class="cta-submit" onclick="subscribeEmail()">Join</button>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-logo">STRIDE</div>
+  <ul class="footer-links">
+    <li><a href="#">Instagram</a></li><li><a href="#">Twitter</a></li>
+    <li><a href="#">Careers</a></li><li><a href="#">Contact</a></li>
+  </ul>
+  <div class="footer-copy">© 2025 Stride. All rights reserved.</div>
+</footer>
+
+<!-- CART DRAWER -->
+<div class="cart-overlay" id="cartOverlay" onclick="closeCart()"></div>
+<div class="cart-drawer" id="cartDrawer">
+  <div class="cart-header">
+    <div class="cart-title">MY CART <span id="cartCount">(0)</span></div>
+    <button class="cart-close" onclick="closeCart()">✕</button>
+  </div>
+  <div class="cart-items" id="cartItems">
+    <div class="cart-empty"><div class="cart-empty-icon">👟</div><p>Your cart is empty</p></div>
+  </div>
+  <div class="cart-footer">
+    <div class="promo-row">
+      <input type="text" class="promo-input" id="promoInput" placeholder="Promo code (try STRIDE20)">
+      <button class="promo-btn" onclick="applyPromo()">Apply</button>
+    </div>
+    <div class="cart-totals">
+      <div class="cart-total-row"><span>Subtotal</span><span id="subtotalVal">$0.00</span></div>
+      <div class="cart-total-row" id="discountRow" style="display:none;color:var(--success)"><span>Discount</span><span id="discountVal">-$0.00</span></div>
+      <div class="cart-total-row"><span>Shipping</span><span id="shippingVal">Calculated at checkout</span></div>
+      <div class="cart-total-row grand"><span>Total</span><span class="total-price" id="totalVal">$0.00</span></div>
+    </div>
+    <button class="checkout-btn" onclick="openPayment()"><span>PROCEED TO CHECKOUT →</span></button>
+    <div class="trust-badges">
+      <div class="trust-badge">🔒 Secure</div>
+      <div class="trust-badge">📦 Free over $200</div>
+      <div class="trust-badge">↩ 30-day returns</div>
+    </div>
+  </div>
+</div>
+
+<!-- PRODUCT QUICK-VIEW MODAL -->
+<div class="modal-overlay" id="modalOverlay" onclick="closeModalOnBg(event)">
+  <div class="modal" id="productModal">
+    <div class="modal-img-side">
+      <button class="modal-close" onclick="closeModal()">✕</button>
+      <img class="modal-main-img" id="modalMainImg" src="" alt="">
+      <div class="modal-thumbs" id="modalThumbs"></div>
+    </div>
+    <div class="modal-details">
+      <div class="modal-brand" id="modalBrand"></div>
+      <div class="modal-name" id="modalName"></div>
+      <div class="modal-type" id="modalType"></div>
+      <div class="modal-rating">
+        <span class="stars" id="modalStars">★★★★★</span>
+        <span class="rating-count" id="modalRating"></span>
+      </div>
+      <div class="modal-price-row">
+        <div class="modal-price" id="modalPrice"></div>
+        <div class="modal-old-price" id="modalOldPrice" style="display:none"></div>
+        <div class="modal-disc" id="modalDisc" style="display:none"></div>
+      </div>
+      <div class="modal-desc" id="modalDesc"></div>
+      <div class="select-label">Color <span id="selectedColorName"></span></div>
+      <div class="color-select" id="modalColors"></div>
+      <div class="select-label">Size (US) <span class="size-guide-link">Size Guide</span></div>
+      <div class="size-select" id="modalSizes"></div>
+      <div class="qty-section">
+        <span class="qty-label">Qty</span>
+        <div class="qty-ctrl">
+          <button class="qty-btn" onclick="changeQty(-1)">−</button>
+          <span class="qty-val" id="qtyVal">1</span>
+          <button class="qty-btn" onclick="changeQty(1)">+</button>
+        </div>
+      </div>
+      <button class="modal-add-btn" onclick="addToCartFromModal()"><span id="addBtnText">ADD TO CART</span></button>
+      <button class="modal-wish-btn" onclick="addToWishlist()">♡ ADD TO WISHLIST</button>
+      <div class="modal-tags" id="modalTags"></div>
+    </div>
+  </div>
+</div>
+
+<!-- PAYMENT MODAL -->
+<div class="pay-overlay" id="payOverlay">
+  <div class="pay-modal" id="payModal">
+    <div class="pay-header">
+      <div class="pay-title">CHECKOUT</div>
+      <div style="display:flex;align-items:center;gap:20px">
+        <div class="pay-secure">🔒 SSL Secured</div>
+        <button class="pay-close" onclick="closePayment()">✕</button>
+      </div>
+    </div>
+    <div class="pay-steps" id="paySteps">
+      <div class="pay-step active" data-step="1"><div class="pay-step-num">1</div>Information</div>
+      <div class="pay-step" data-step="2"><div class="pay-step-num">2</div>Shipping</div>
+      <div class="pay-step" data-step="3"><div class="pay-step-num">3</div>Payment</div>
+      <div class="pay-step" data-step="4"><div class="pay-step-num">4</div>Review</div>
+    </div>
+    <div class="pay-body" id="payBody"></div>
+    <div class="pay-footer" id="payFooter"></div>
+  </div>
+</div>
+
+</div><!-- /storePage -->
+
+<!-- ════════════════════════════════════════
+     CUSTOMER AUTH PAGE
+════════════════════════════════════════ -->
+<div id="customerAuthPage">
+  <div class="ca-wrap">
+    <div class="ca-left">
+      <div class="ca-left-grid"></div>
+      <div class="ca-left-glow"></div>
+      <div class="ca-left-content">
+        <div class="ca-brand">STRIDE</div>
+        <div class="ca-tagline">Beyond<br><em>Every</em><br>Limit</div>
+        <div class="ca-desc">Join the STRIDE community. Get early access to drops, exclusive member pricing, and full order tracking.</div>
+        <div class="ca-features">
+          <div class="ca-feat"><div class="ca-feat-line"></div><div class="ca-feat-text"><strong>Early Access</strong> to limited drops</div></div>
+          <div class="ca-feat"><div class="ca-feat-line"></div><div class="ca-feat-text"><strong>Member Pricing</strong> on all collections</div></div>
+          <div class="ca-feat"><div class="ca-feat-line"></div><div class="ca-feat-text"><strong>Order Tracking</strong> in real-time</div></div>
+          <div class="ca-feat"><div class="ca-feat-line"></div><div class="ca-feat-text"><strong>Free Returns</strong> for 30 days</div></div>
+        </div>
+      </div>
+    </div>
+    <div class="ca-right">
+      <button class="ca-back" onclick="closeCustomerAuth()">← Back to Store</button>
+      <div class="ca-form-box">
+        <div class="ca-tabs">
+          <button class="ca-tab active" id="caLoginTab" onclick="switchCATab('login')">Login</button>
+          <button class="ca-tab" id="caSignupTab" onclick="switchCATab('signup')">Sign Up</button>
+        </div>
+        <div id="caFormBody"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════
+     CUSTOMER PROFILE PANEL
+════════════════════════════════════════ -->
+<div id="customerProfilePanel">
+  <div class="cp-modal">
+    <button class="cp-close" onclick="closeCustomerProfile()">✕</button>
+    <div class="cp-hdr">
+      <div class="cp-avatar" id="cpAvatar">U</div>
+      <div>
+        <div class="cp-name" id="cpName">User Name</div>
+        <div class="cp-email" id="cpEmail">user@email.com</div>
+        <div class="cp-badge">✓ Verified Member</div>
+      </div>
+    </div>
+    <div class="cp-tabs">
+      <button class="cp-tab active" onclick="switchCPTab('orders',this)">Orders</button>
+      <button class="cp-tab" onclick="switchCPTab('profile',this)">Profile</button>
+      <button class="cp-tab" onclick="switchCPTab('wishlist',this)">Wishlist</button>
+    </div>
+    <div class="cp-panel active" id="cp-orders">
+      <div id="cpOrdersList"></div>
+    </div>
+    <div class="cp-panel" id="cp-profile">
+      <div class="cp-profile-grid">
+        <div><label class="cp-prof-label">Full Name</label><input class="cp-prof-inp" id="cpEditName"></div>
+        <div><label class="cp-prof-label">Email</label><input class="cp-prof-inp" id="cpEditEmail" type="email"></div>
+        <div><label class="cp-prof-label">Phone</label><input class="cp-prof-inp" id="cpEditPhone" type="tel"></div>
+        <div><label class="cp-prof-label">City</label><input class="cp-prof-inp" id="cpEditCity"></div>
+      </div>
+      <button class="cp-save-btn" style="margin-top:16px" onclick="saveCustomerProfile()">Save Changes</button>
+      <button class="cp-logout-btn" onclick="customerLogout()">Sign Out</button>
+    </div>
+    <div class="cp-panel" id="cp-wishlist">
+      <div style="text-align:center;padding:40px 20px;color:var(--mid)">
+        <div style="font-size:40px;margin-bottom:12px;opacity:.3">♡</div>
+        <p style="font-size:12px;letter-spacing:2px;text-transform:uppercase">Your wishlist is empty</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════
+     ADMIN AUTH OVERLAY
+════════════════════════════════════════ -->
+<div class="admin-auth-overlay" id="adminAuthOverlay">
+  <div class="aac">
+    <button class="aac-close" onclick="closeAdminAuth()">✕</button>
+    <div class="aac-logo">STRIDE</div>
+    <div class="aac-sub">Admin Access</div>
+    <div id="aacFormBody"></div>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════
+     ADMIN PAGE
+════════════════════════════════════════ -->
+<div id="adminPage">
+  <nav class="admin-nav">
+    <div class="admin-logo">STRIDE <small>Admin</small></div>
+    <div class="admin-nav-r">
+      <div class="theme-toggle-btn" id="themeToggleAdmin" title="Toggle theme">
+        <div class="theme-knob" id="adminKnob">🌙</div>
+      </div>
+      <div class="admin-chip">
+        <div class="admin-chip-av" id="adminInitialBadge">A</div>
+        <span class="admin-chip-nm" id="adminNameLabel">Admin</span>
+      </div>
+      <button class="admin-btn-sm" onclick="goToStore()">← Store</button>
+      <button class="admin-btn-sm danger" onclick="adminLogout()">Logout</button>
+    </div>
+  </nav>
+  <div class="admin-layout">
+    <div class="admin-sidebar">
+      <div class="sb-label">Main</div>
+      <button class="sb-btn active" onclick="switchAdminPanel('dashboard',this)"><span class="sb-icon">📊</span>Dashboard</button>
+      <button class="sb-btn" onclick="switchAdminPanel('orders',this)"><span class="sb-icon">📦</span>Orders</button>
+      <button class="sb-btn" onclick="switchAdminPanel('customers',this)"><span class="sb-icon">👥</span>Customers</button>
+      <button class="sb-btn" onclick="switchAdminPanel('products',this)"><span class="sb-icon">👟</span>Products</button>
+      <div class="sb-label">Settings</div>
+      <button class="sb-btn danger" onclick="adminLogout()"><span class="sb-icon">🚪</span>Logout</button>
+    </div>
+    <div class="admin-content">
+
+      <!-- DASHBOARD PANEL -->
+      <div class="admin-panel active" id="panel-dashboard">
+        <div class="a-sublabel">Overview</div>
+        <div class="a-title">Dashboard</div>
+        <div class="stat-cards">
+          <div class="stat-card"><div class="sc-label">Total Revenue</div><div class="sc-num">$62,480</div><div class="sc-change">↑ 12.4% this month</div><div class="sc-icon">💰</div></div>
+          <div class="stat-card"><div class="sc-label">Orders</div><div class="sc-num">1,482</div><div class="sc-change">↑ 8.1% this month</div><div class="sc-icon">📦</div></div>
+          <div class="stat-card"><div class="sc-label">Customers</div><div class="sc-num">748</div><div class="sc-change">↑ 5.3% this month</div><div class="sc-icon">👥</div></div>
+          <div class="stat-card"><div class="sc-label">Avg Rating</div><div class="sc-num">4.8</div><div class="sc-change">★ Based on 2,341 reviews</div><div class="sc-icon">⭐</div></div>
+        </div>
+        <div class="chart-row">
+          <div class="chart-card">
+            <div class="chart-title">Revenue (2025)</div>
+            <div class="bar-chart" id="revenueChart"></div>
+          </div>
+          <div class="chart-card">
+            <div class="chart-title">By Category</div>
+            <div class="donut-wrap">
+              <svg width="110" height="110" viewBox="0 0 36 36">
+                <circle cx="18" cy="18" r="15.9" fill="none" stroke="rgba(255,255,255,.06)" stroke-width="3.8"/>
+                <circle cx="18" cy="18" r="15.9" fill="none" stroke="#ff3d00" stroke-width="3.8" stroke-dasharray="36 64" stroke-dashoffset="25" transform="rotate(-90 18 18)"/>
+                <circle cx="18" cy="18" r="15.9" fill="none" stroke="#ff6b00" stroke-width="3.8" stroke-dasharray="21 79" stroke-dashoffset="-11" transform="rotate(-90 18 18)"/>
+                <circle cx="18" cy="18" r="15.9" fill="none" stroke="#994400" stroke-width="3.8" stroke-dasharray="14 86" stroke-dashoffset="-32" transform="rotate(-90 18 18)"/>
+                <circle cx="18" cy="18" r="15.9" fill="none" stroke="#662200" stroke-width="3.8" stroke-dasharray="10 90" stroke-dashoffset="-46" transform="rotate(-90 18 18)"/>
+              </svg>
+              <div class="donut-legend">
+                <div class="legend-row"><div class="legend-dot" style="background:#ff3d00"></div>Running — 36%</div>
+                <div class="legend-row"><div class="legend-dot" style="background:#ff6b00"></div>Lifestyle — 21%</div>
+                <div class="legend-row"><div class="legend-dot" style="background:#994400"></div>Performance — 14%</div>
+                <div class="legend-row"><div class="legend-dot" style="background:#662200"></div>Trail — 10%</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="admin-tbl-card">
+          <div class="admin-tbl-hd"><div class="admin-tbl-title">Recent Orders</div></div>
+          <div class="tbl-wrap"><table id="dashOrdersTable"></table></div>
+        </div>
+      </div>
+
+      <!-- ORDERS PANEL -->
+      <div class="admin-panel" id="panel-orders">
+        <div class="a-sublabel">Management</div>
+        <div class="a-title">Orders</div>
+        <div class="admin-tbl-card">
+          <div class="admin-tbl-hd">
+            <div class="admin-tbl-title">All Orders</div>
+            <input class="admin-search" placeholder="Search orders…" oninput="filterOrders(this.value)">
+          </div>
+          <div class="tbl-wrap"><table id="ordersTable"></table></div>
+        </div>
+      </div>
+
+      <!-- CUSTOMERS PANEL -->
+      <div class="admin-panel" id="panel-customers">
+        <div class="a-sublabel">Management</div>
+        <div class="a-title">Customers</div>
+        <div class="admin-tbl-card">
+          <div class="admin-tbl-hd">
+            <div class="admin-tbl-title">All Customers</div>
+            <input class="admin-search" placeholder="Search customers…" oninput="filterCustomers(this.value)">
+          </div>
+          <div class="tbl-wrap"><table id="customersTable"></table></div>
+        </div>
+      </div>
+
+      <!-- PRODUCTS PANEL -->
+      <div class="admin-panel" id="panel-products">
+        <div class="pm-header">
+          <div>
+            <div class="a-sublabel">Management</div>
+            <div class="a-title" style="margin-bottom:0">Products</div>
+          </div>
+          <button class="pm-add-btn" onclick="openProdEditor(null)">+ Add Product</button>
+        </div>
+        <div class="pm-grid" id="pmGrid"></div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- PRODUCT EDITOR OVERLAY -->
+<div class="prod-edit-overlay" id="prodEditOverlay">
+  <div class="pem">
+    <div class="pem-hdr">
+      <div class="pem-title" id="pemTitle">Add Product</div>
+      <button class="pem-close-btn" onclick="closeProdEditor()">✕</button>
+    </div>
+    <div class="pem-body" id="pemBody"></div>
+  </div>
+</div>
+
+<script>
+/* ══════════════════════════════════════════════════════
+   ORIGINAL STRIDE PRODUCT DATA — 19 PRODUCTS
+══════════════════════════════════════════════════════ */
+let PRODUCTS = [
+  {id:1,name:'Apex Dark',brand:'STRIDE',type:'Running — Ultralight',category:'running',price:249,rating:4.9,ratingCount:1284,badge:'new',desc:'Born from elite athlete feedback, the Apex Dark features our new ProFoam X cushioning system. Carbon fiber plate delivers explosive energy return on every stride.',colors:[{name:'Midnight',hex:'#1a1a2e'},{name:'Phantom',hex:'#2d2d2d'},{name:'Forest',hex:'#1a3012'}],sizes:['7','7.5','8','8.5','9','9.5','10','10.5','11','12'],oosizes:['7'],tags:['Carbon Plate','ProFoam X','Ultralight','Racing'],img:'https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=400&q=80',imgs:['https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=400&q=80','https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=600&q=80']},
+  {id:2,name:'Vapor Cloud',brand:'STRIDE',type:'Lifestyle',category:'lifestyle',price:185,oldPrice:230,rating:4.7,ratingCount:892,badge:'sale',desc:'The Vapor Cloud merges streetwear aesthetics with serious comfort tech. Memory foam insole and breathable knit upper keep you locked in all day.',colors:[{name:'Cream',hex:'#e8e2d9'},{name:'Crimson',hex:'#cc1122'},{name:'Slate',hex:'#4a5568'}],sizes:['7','7.5','8','8.5','9','9.5','10','10.5','11','12'],oosizes:[],tags:['Memory Foam','Knit Upper','Street','Lifestyle'],img:'https://images.unsplash.com/photo-1460353581641-37baddab0fa2?w=400&q=80',imgs:['https://images.unsplash.com/photo-1460353581641-37baddab0fa2?w=400&q=80']},
+  {id:3,name:'Terra Edge',brand:'STRIDE',type:'Trail — All-Terrain',category:'trail',price:210,rating:4.8,ratingCount:541,badge:'hot',desc:'Dominate any trail with Vibram MegaGrip outsole, waterproof Gore-Tex liner, and rock plate protection. Built to go anywhere, built to last.',colors:[{name:'Forest',hex:'#2d5016'},{name:'Night',hex:'#1a1a2e'},{name:'Sand',hex:'#c4a882'}],sizes:['7','8','8.5','9','9.5','10','10.5','11','12'],oosizes:['7'],tags:['Gore-Tex','Vibram','Rock Plate','Waterproof'],img:'https://images.unsplash.com/photo-1491553895911-0055eca6402d?w=400&q=80',imgs:['https://images.unsplash.com/photo-1491553895911-0055eca6402d?w=400&q=80']},
+  {id:4,name:'Blaze Pro',brand:'STRIDE',type:'Performance — Speed',category:'performance',price:295,rating:5.0,ratingCount:327,badge:'ltd',desc:'Race-day weapon. Stiff carbon plate, maximal stack height, and ultra-thin mesh upper shave seconds off your PR. World-record tested geometry.',colors:[{name:'Flame',hex:'#ff3d00'},{name:'White',hex:'#f0f0f0'}],sizes:['7','7.5','8','8.5','9','9.5','10','11'],oosizes:['7'],tags:['Race Day','Carbon','Full-Length Plate','PR Ready'],img:'https://images.unsplash.com/photo-1606107557195-0e29a4b5b4aa?w=400&q=80',imgs:['https://images.unsplash.com/photo-1606107557195-0e29a4b5b4aa?w=400&q=80']},
+  {id:5,name:'Street Phantom',brand:'STRIDE',type:'Lifestyle — Streetwear',category:'lifestyle',price:165,rating:4.6,ratingCount:763,badge:'',desc:'Low-profile silhouette inspired by archive running shoes. Premium suede overlays, gum rubber sole, and that clean OG profile that never goes out of style.',colors:[{name:'Chalk',hex:'#ddd8d0'},{name:'Black',hex:'#111'},{name:'Navy',hex:'#1a2550'}],sizes:['7','7.5','8','8.5','9','9.5','10','10.5','11','12','13'],oosizes:[],tags:['Suede','Low-Profile','Archive','Gum Sole'],img:'https://images.unsplash.com/photo-1539185441755-769473a23570?w=400&q=80',imgs:['https://images.unsplash.com/photo-1539185441755-769473a23570?w=400&q=80']},
+  {id:6,name:'Tempo V2',brand:'STRIDE',type:'Running — Daily Trainer',category:'running',price:175,rating:4.8,ratingCount:1102,badge:'',desc:'Your perfect everyday trainer just got better. Softer landing, snappier toe-off, and improved Engineered Mesh that breathes 30% more than before.',colors:[{name:'Sky',hex:'#38bdf8'},{name:'Coral',hex:'#fb7185'},{name:'Ghost',hex:'#e2e8f0'}],sizes:['7','7.5','8','8.5','9','9.5','10','10.5','11','12'],oosizes:[],tags:['Daily Trainer','Engineered Mesh','Stack Foam'],img:'https://images.unsplash.com/photo-1562183241-b937e95585b6?w=400&q=80',imgs:['https://images.unsplash.com/photo-1562183241-b937e95585b6?w=400&q=80']},
+  {id:7,name:'Summit Peak',brand:'STRIDE',type:'Trail — Technical',category:'trail',price:240,rating:4.9,ratingCount:418,badge:'new',desc:'High-alpine technical trail shoe. Aggressive lug pattern, rock shield, and quick-lace system designed for rapid ascents and technical descents.',colors:[{name:'Ember',hex:'#ea580c'},{name:'Storm',hex:'#475569'},{name:'Alpine',hex:'#166534'}],sizes:['8','8.5','9','9.5','10','10.5','11','12'],oosizes:['8'],tags:['Technical','Lug Sole','Quick-Lace','Rock Shield'],img:'https://images.unsplash.com/photo-1551107696-a4b0c5a0d9a2?w=400&q=80',imgs:['https://images.unsplash.com/photo-1551107696-a4b0c5a0d9a2?w=400&q=80']},
+  {id:8,name:'Glide Elite',brand:'STRIDE',type:'Performance — Marathon',category:'performance',price:320,oldPrice:380,rating:4.9,ratingCount:189,badge:'sale',desc:'Elite marathon racer. Dual-layer foam stack with PEBA top layer delivers unmatched energy return for the final miles when it matters most.',colors:[{name:'Gold',hex:'#d97706'},{name:'Obsidian',hex:'#1e1b4b'}],sizes:['7','7.5','8','8.5','9','9.5','10','10.5','11'],oosizes:['7','7.5'],tags:['PEBA Foam','Dual-Layer','Marathon','Gold Standard'],img:'https://images.unsplash.com/photo-1595950653106-6c9ebd614d3a?w=400&q=80',imgs:['https://images.unsplash.com/photo-1595950653106-6c9ebd614d3a?w=400&q=80']},
+  {id:9,name:'Low Rider Classic',brand:'STRIDE',type:'Lifestyle — Retro',category:'lifestyle',price:145,rating:4.5,ratingCount:2341,badge:'',desc:'The shoe that started it all, back and better. Premium leather construction, OG coloring, and a cushioned insole update for modern comfort.',colors:[{name:'White/Red',hex:'#f5f5f5'},{name:'All White',hex:'#fafafa'},{name:'Black/Gum',hex:'#1a1a1a'}],sizes:['6.5','7','7.5','8','8.5','9','9.5','10','10.5','11','12','13'],oosizes:[],tags:['Leather','Retro','OG Colorway','Archive'],img:'https://images.unsplash.com/photo-1560769629-975ec94e6a86?w=400&q=80',imgs:['https://images.unsplash.com/photo-1560769629-975ec94e6a86?w=400&q=80']},
+  {id:10,name:'Carbon Racer X',brand:'STRIDE',type:'Performance — Track',category:'performance',price:355,rating:5.0,ratingCount:94,badge:'ltd',desc:'Track-to-road warrior. Precision-shaped carbon plate stiffened at the forefoot for explosive sprint starts. Worn by 3 Olympic finalists.',colors:[{name:'Race Red',hex:'#dc2626'},{name:'Chrome',hex:'#94a3b8'}],sizes:['7','8','8.5','9','9.5','10','11','12'],oosizes:['7'],tags:['Track','Sprint','Olympic','Carbon'],img:'https://images.unsplash.com/photo-1600185365926-3a2ce3cdb9eb?w=400&q=80',imgs:['https://images.unsplash.com/photo-1600185365926-3a2ce3cdb9eb?w=400&q=80']},
+  {id:11,name:'Mud Crusher',brand:'STRIDE',type:'Trail — Extreme',category:'trail',price:195,rating:4.7,ratingCount:632,badge:'',desc:'Monster of the mud. 6mm lug depth self-cleans between strides. Aggressive stone guard, drainage ports and a fit that locks your heel even in the worst conditions.',colors:[{name:'Khaki',hex:'#78716c'},{name:'Blood Orange',hex:'#c2410c'},{name:'Stealth',hex:'#1c1917'}],sizes:['7','8','9','9.5','10','10.5','11','12'],oosizes:[],tags:['6mm Lugs','Mud','Self-Cleaning','Extreme'],img:'https://images.unsplash.com/photo-1608231387042-66d1773d3028?w=400&q=80',imgs:['https://images.unsplash.com/photo-1608231387042-66d1773d3028?w=400&q=80']},
+  {id:12,name:'Urban Drift',brand:'STRIDE',type:'Lifestyle — Slip-On',category:'lifestyle',price:125,rating:4.4,ratingCount:1567,badge:'',desc:'Zero lace, maximum cool. Elastic knit upper slips on in seconds, contoured midsole keeps you comfortable from coffee to commute.',colors:[{name:'Stone',hex:'#a8a29e'},{name:'Terracotta',hex:'#b45309'},{name:'Sage',hex:'#4d7c0f'}],sizes:['7','7.5','8','8.5','9','9.5','10','10.5','11','12'],oosizes:[],tags:['Slip-On','Knit','Lifestyle','Commuter'],img:'https://images.unsplash.com/photo-1543508282-6319a3e2621f?w=400&q=80',imgs:['https://images.unsplash.com/photo-1543508282-6319a3e2621f?w=400&q=80']},
+  {id:13,name:'Speed Flash',brand:'STRIDE',type:'Running — Tempo',category:'running',price:155,oldPrice:195,rating:4.6,ratingCount:847,badge:'sale',desc:'Built for speed workouts and tempo runs. A firmer ride with snappy TPU guidance that keeps you efficient through your hardest training days.',colors:[{name:'Electric',hex:'#7c3aed'},{name:'Neon Yellow',hex:'#a3e635'},{name:'Hot Pink',hex:'#ec4899'}],sizes:['7','7.5','8','8.5','9','9.5','10','11','12'],oosizes:[],tags:['Tempo','Speed','TPU','Training'],img:'https://images.unsplash.com/photo-1576566588028-4147f3842f27?w=400&q=80',imgs:['https://images.unsplash.com/photo-1576566588028-4147f3842f27?w=400&q=80']},
+  {id:14,name:'Oxford Prestige',brand:'STRIDE',type:'Formal — Premium',category:'formal',price:410,rating:4.9,ratingCount:203,badge:'ltd',desc:'Performance footwear meets formal elegance. Hand-stitched calfskin upper with our comfort sole technology invisible beneath premium leather — power dressing, redefined.',colors:[{name:'Oxford Tan',hex:'#92400e'},{name:'Midnight Black',hex:'#0a0a0a'}],sizes:['7','8','8.5','9','9.5','10','11','12'],oosizes:['7'],tags:['Formal','Calfskin','Hand-Stitched','Premium'],img:'https://images.unsplash.com/photo-1614252369475-531eba835eb1?w=400&q=80',imgs:['https://images.unsplash.com/photo-1614252369475-531eba835eb1?w=400&q=80']},
+  {id:15,name:'Cross Trainer Pro',brand:'STRIDE',type:'Performance — Gym',category:'performance',price:185,rating:4.7,ratingCount:1234,badge:'new',desc:'From box jumps to deadlifts to sprints — one shoe rules them all. Wide base for stability under heavy loads, flexible forefoot for explosive movement.',colors:[{name:'Gunmetal',hex:'#374151'},{name:'Crimson',hex:'#991b1b'},{name:'White',hex:'#f9fafb'}],sizes:['7','8','8.5','9','9.5','10','10.5','11','12','13'],oosizes:[],tags:['CrossFit','Gym','Stability','Multi-Sport'],img:'https://images.unsplash.com/photo-1619210000-f9b49e043bd0?w=400&q=80',imgs:['https://images.unsplash.com/photo-1619210000-f9b49e043bd0?w=400&q=80']},
+  {id:16,name:'Moonwalker',brand:'STRIDE',type:'Lifestyle — Luxury',category:'lifestyle',price:380,rating:4.8,ratingCount:147,badge:'',desc:'Streetwear at the highest level. Japanese premium leather, hand-applied sole bevel, and silk interior lining. Only 500 pairs per colorway.',colors:[{name:'Pearl',hex:'#e2e8f0'},{name:'Obsidian',hex:'#0f172a'}],sizes:['7','8','9','9.5','10','10.5','11','12'],oosizes:['7'],tags:['Luxury','Limited','Japanese Leather','Collector'],img:'https://images.unsplash.com/photo-1520316587275-5e4f06f355e3?w=400&q=80',imgs:['https://images.unsplash.com/photo-1520316587275-5e4f06f355e3?w=400&q=80']},
+  {id:17,name:'Long Run',brand:'STRIDE',type:'Running — Ultramarathon',category:'running',price:215,rating:4.8,ratingCount:589,badge:'',desc:'Made for the long ones. Maximum cushion, toe box room for swelling, and anti-blister interior lining. Built for 50-mile attempts and beyond.',colors:[{name:'Dusk',hex:'#7c3aed'},{name:'Dawn',hex:'#f59e0b'},{name:'Storm',hex:'#374151'}],sizes:['7','7.5','8','8.5','9','9.5','10','10.5','11','12'],oosizes:[],tags:['Ultra','Max Cushion','Anti-Blister','Long Distance'],img:'https://images.unsplash.com/photo-1587486913049-53fc88980cfc?w=400&q=80',imgs:['https://images.unsplash.com/photo-1587486913049-53fc88980cfc?w=400&q=80']},
+  {id:18,name:'Desert Walker',brand:'STRIDE',type:'Trail — Desert',category:'trail',price:225,rating:4.6,ratingCount:312,badge:'new',desc:'Engineered for heat and sand. Sand collar prevents ingress, breathable open mesh circulates air, and extra-tough outsole rubber withstands extreme temperatures.',colors:[{name:'Sand',hex:'#d4a96a'},{name:'Sienna',hex:'#b45309'}],sizes:['7','8','9','9.5','10','10.5','11','12'],oosizes:[],tags:['Desert','Sand Collar','Heat-Resistant','Breathable'],img:'https://images.unsplash.com/photo-1511556532299-8f662fc26c06?w=400&q=80',imgs:['https://images.unsplash.com/photo-1511556532299-8f662fc26c06?w=400&q=80']},
+  {id:19,name:'Basketball Pro',brand:'STRIDE',type:'Performance — Court',category:'performance',price:265,rating:4.7,ratingCount:728,badge:'hot',desc:'Court-ready from tip-off to overtime. Ankle lockdown strap, herringbone outsole traction, and bounce-back foam that stays responsive deep into the fourth quarter.',colors:[{name:'Court Black',hex:'#111'},{name:'Home White',hex:'#f5f5f5'},{name:'Triple Gold',hex:'#ca8a04'}],sizes:['8','8.5','9','9.5','10','10.5','11','11.5','12','13'],oosizes:['8'],tags:['Basketball','Court','Herringbone','Ankle Support'],img:'https://images.unsplash.com/photo-1614252235316-8c857d38b5f4?w=400&q=80',imgs:['https://images.unsplash.com/photo-1614252235316-8c857d38b5f4?w=400&q=80']}
+];
+
+/* ══ MOCK DATA ══ */
+const MOCK_ORDERS = [
+  {id:"STR10001",customer:"Alex Jordan",   email:"alex@email.com",   phone:"+1 555 010 0001",country:"USA",   city:"New York",  address:"350 Fifth Avenue",       postal:"10118",product:"Apex Dark",       size:"10",  total:"$249.00",status:"delivered",date:"2025-05-10"},
+  {id:"STR10002",customer:"Sam Rivera",    email:"sam@email.com",    phone:"+44 77 1234 5678",country:"UK",    city:"London",    address:"12 Baker Street",        postal:"NW1 6XE",product:"Blaze Pro",       size:"9",   total:"$295.00",status:"shipped",  date:"2025-05-14"},
+  {id:"STR10003",customer:"Jordan Lee",    email:"jlee@email.com",   phone:"+33 6 12 34 56 78",country:"France",city:"Paris",    address:"8 Rue de Rivoli",        postal:"75001",product:"Vapor Cloud",     size:"8.5", total:"$185.00",status:"delivered",date:"2025-05-08"},
+  {id:"STR10004",customer:"Casey Morgan",  email:"cmorgan@email.com",phone:"+1 212 555 1234",  country:"USA",   city:"Chicago",  address:"233 S Wacker Dr",        postal:"60606",product:"Terra Edge",      size:"11",  total:"$210.00",status:"pending",  date:"2025-05-18"},
+  {id:"STR10005",customer:"Taylor Brooks", email:"tbrooks@email.com",phone:"+49 30 123 4567",  country:"Germany",city:"Berlin",  address:"Unter den Linden 5",     postal:"10117",product:"Summit Peak",     size:"9.5", total:"$240.00",status:"delivered",date:"2025-05-03"},
+  {id:"STR10006",customer:"Morgan Hayes",  email:"mhayes@email.com", phone:"+61 4 1234 5678",  country:"Australia",city:"Sydney","address":"1 Macquarie St",       postal:"2000",  product:"Glide Elite",    size:"10",  total:"$320.00",status:"shipped",  date:"2025-05-20"},
+  {id:"STR10007",customer:"Riley Chen",    email:"rchen@email.com",  phone:"+65 9123 4567",    country:"Singapore",city:"Singapore","address":"Marina Bay Sands",   postal:"018956",product:"Carbon Racer X", size:"8",   total:"$355.00",status:"pending",  date:"2025-05-22"},
+  {id:"STR10008",customer:"Drew Kim",      email:"dkim@email.com",   phone:"+82 10 1234 5678", country:"Korea", city:"Seoul",    address:"63 Yeouido-dong",        postal:"07345",product:"Oxford Prestige", size:"9",   total:"$410.00",status:"cancelled",date:"2025-04-30"},
+];
+const MOCK_CUSTOMERS = [
+  {id:"SC001",name:"Alex Jordan",   email:"alex@email.com",   city:"New York",  phone:"+1 555 010 0001",orders:5, spent:"$1,240.00"},
+  {id:"SC002",name:"Sam Rivera",    email:"sam@email.com",    city:"London",    phone:"+44 77 1234 5678",orders:3, spent:"$865.00"},
+  {id:"SC003",name:"Jordan Lee",    email:"jlee@email.com",   city:"Paris",     phone:"+33 6 12 34 56 78",orders:8, spent:"$2,130.00"},
+  {id:"SC004",name:"Casey Morgan",  email:"cmorgan@email.com",city:"Chicago",   phone:"+1 212 555 1234",orders:2, spent:"$480.00"},
+  {id:"SC005",name:"Taylor Brooks", email:"tbrooks@email.com",city:"Berlin",    phone:"+49 30 123 4567",orders:6, spent:"$1,890.00"},
+  {id:"SC006",name:"Morgan Hayes",  email:"mhayes@email.com", city:"Sydney",    phone:"+61 4 1234 5678",orders:4, spent:"$1,120.00"},
+  {id:"SC007",name:"Riley Chen",    email:"rchen@email.com",  city:"Singapore", phone:"+65 9123 4567",orders:1, spent:"$355.00"},
+  {id:"SC008",name:"Drew Kim",      email:"dkim@email.com",   city:"Seoul",     phone:"+82 10 1234 5678",orders:3, spent:"$740.00"},
+];
+let customerUsers = [
+  {name:"Alex Jordan",email:"alex@stride.com",password:"Alex@123",phone:"+1 555 010 0001",city:"New York",joined:"2025-01-10",orders:["STR10001","STR10004"]}
+];
+let adminUsers = [{name:"Admin",email:"admin@stride.com",password:"Admin@123"}];
+let currentCustomer = null;
+let currentAdmin = null;
+
+/* ══ CART & MODAL STATE ══ */
+let cart = [];
+let currentProduct = null;
+let currentQty = 1;
+let currentSize = null;
+let currentColor = null;
+let promoApplied = false;
+let promoDiscount = 0;
+let currentPayStep = 1;
+let payData = {};
+let editingProductId = null;
+let nextProductId = 100;
+const EU_SIZES = [36,37,38,39,40,41,42,43,44,45];
+
+/* ══ CURSOR ══ */
+const cursor = document.getElementById('cursor');
+const cursorRing = document.getElementById('cursorRing');
+let mouseX=0,mouseY=0,ringX=0,ringY=0;
+document.addEventListener('mousemove',e=>{mouseX=e.clientX;mouseY=e.clientY;cursor.style.left=mouseX+'px';cursor.style.top=mouseY+'px';});
+document.addEventListener('mousedown',()=>cursor.style.transform='translate(-50%,-50%) scale(2.5)');
+document.addEventListener('mouseup',()=>cursor.style.transform='translate(-50%,-50%) scale(1)');
+function animateRing(){ringX+=(mouseX-ringX)*.1;ringY+=(mouseY-ringY)*.1;cursorRing.style.left=ringX+'px';cursorRing.style.top=ringY+'px';requestAnimationFrame(animateRing);}
+animateRing();
+function addHoverCursor(sel){document.querySelectorAll(sel).forEach(el=>{el.addEventListener('mouseenter',()=>{cursor.style.transform='translate(-50%,-50%) scale(2.5)';cursorRing.style.borderColor='rgba(255,61,0,.9)';});el.addEventListener('mouseleave',()=>{cursor.style.transform='translate(-50%,-50%) scale(1)';cursorRing.style.borderColor='rgba(255,61,0,.5)';});});}
+
+/* ══ THEME TOGGLE ══ */
+function toggleTheme(){
+  const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+  document.documentElement.setAttribute('data-theme', isDark ? 'light' : 'dark');
+  const emoji = isDark ? '☀️' : '🌙';
+  document.getElementById('themeKnob').textContent = emoji;
+  const ak = document.getElementById('adminKnob');
+  if(ak) ak.textContent = emoji;
+}
+document.getElementById('themeToggle').addEventListener('click', toggleTheme);
+document.getElementById('themeToggleAdmin').addEventListener('click', toggleTheme);
+
+/* ══ COUNTDOWN ══ */
+(function(){
+  const end = new Date();
+  end.setHours(end.getHours()+8);
+  end.setMinutes(end.getMinutes()+34);
+  end.setSeconds(end.getSeconds()+21);
+  function tick(){
+    const diff = Math.max(0,end-Date.now());
+    const h = Math.floor(diff/3600000);
+    const m = Math.floor((diff%3600000)/60000);
+    const s = Math.floor((diff%60000)/1000);
+    document.getElementById('cd-h').textContent = String(h).padStart(2,'0');
+    document.getElementById('cd-m').textContent = String(m).padStart(2,'0');
+    document.getElementById('cd-s').textContent = String(s).padStart(2,'0');
+  }
+  tick(); setInterval(tick,1000);
+})();
+
+/* ══ REVEAL OBSERVER ══ */
+const observer = new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){setTimeout(()=>e.target.classList.add('visible'),100);observer.unobserve(e.target);}});},{threshold:.1});
+document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
+
+/* ══ RENDER PRODUCTS ══ */
+function renderProducts(filter='all'){
+  const grid = document.getElementById('productsGrid');
+  const filtered = filter==='all' ? PRODUCTS : PRODUCTS.filter(p=>p.category===filter);
+  grid.innerHTML = filtered.map(p=>`
+    <div class="product-card reveal" data-id="${p.id}">
+      <div class="product-img" onclick="openModal(${p.id})">
+        <img class="shoe-img" src="${p.img}" alt="${p.name}" loading="lazy" onerror="this.src='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22200%22 height=%22200%22><rect fill=%22%23222%22 width=%22200%22 height=%22200%22/><text fill=%22%23555%22 font-size=%2240%22 x=%2250%25%22 y=%2250%25%22 dominant-baseline=%22middle%22 text-anchor=%22middle%22>👟</text></svg>'">
+        ${p.badge?`<div class="badge badge-${p.badge}">${p.badge.toUpperCase()}</div>`:''}
+        <button class="wishlist-btn" onclick="event.stopPropagation();this.classList.toggle('active');showToast('♡',this.classList.contains('active')?'Added to wishlist':'Removed from wishlist')">♡</button>
+        <button class="product-quick" onclick="event.stopPropagation();openModal(${p.id})">QUICK VIEW</button>
+      </div>
+      <div class="color-options">
+        ${p.colors.slice(0,4).map((c,i)=>`<div class="color-chip ${i===0?'active':''}" style="background:${c.hex}" onclick="event.stopPropagation();this.closest('.product-card').querySelectorAll('.color-chip').forEach(ch=>ch.classList.remove('active'));this.classList.add('active')" title="${c.name}"></div>`).join('')}
+      </div>
+      <div class="size-row-mini">
+        ${p.sizes.slice(0,5).map(s=>`<div class="size-mini ${p.oosizes.includes(s)?'oos':''}" onclick="event.stopPropagation();if(!this.classList.contains('oos')){this.closest('.product-card').querySelectorAll('.size-mini').forEach(sm=>sm.classList.remove('active'));this.classList.add('active');}">${s}</div>`).join('')}
+        <div class="size-mini" onclick="openModal(${p.id})">+${Math.max(0,p.sizes.length-5)}</div>
+      </div>
+      <div class="product-info">
+        <div class="product-name">${p.name}</div>
+        <div class="product-sub">${p.type}</div>
+        <div class="product-price-row">
+          <div class="product-price">$${p.price}</div>
+          ${p.oldPrice?`<div class="product-old-price">$${p.oldPrice}</div><div class="product-disc">-${Math.round((1-p.price/p.oldPrice)*100)}%</div>`:''}
+        </div>
+      </div>
+    </div>`).join('');
+  document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
+  addHoverCursor('.product-card,.filter-btn,.nav-cart,.color-chip,.size-mini,.wishlist-btn,.product-quick,a,button');
+}
+renderProducts();
+
+document.querySelectorAll('.filter-btn').forEach(btn=>{
+  btn.addEventListener('click',()=>{
+    document.querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('active'));
+    btn.classList.add('active');
+    renderProducts(btn.dataset.filter);
+  });
+});
+
+/* ══ MODAL ══ */
+function openModal(id){
+  currentProduct = PRODUCTS.find(p=>p.id===id);
+  if(!currentProduct) return;
+  currentQty=1; currentSize=null; currentColor=currentProduct.colors[0];
+  document.getElementById('modalBrand').textContent = currentProduct.brand;
+  document.getElementById('modalName').textContent  = currentProduct.name;
+  document.getElementById('modalType').textContent  = currentProduct.type;
+  document.getElementById('modalStars').textContent = '★'.repeat(Math.floor(currentProduct.rating))+(currentProduct.rating%1>=.5?'½':'')+'☆'.repeat(5-Math.ceil(currentProduct.rating));
+  document.getElementById('modalRating').textContent= `${currentProduct.rating}/5.0 · ${currentProduct.ratingCount.toLocaleString()} reviews`;
+  document.getElementById('modalPrice').textContent = `$${currentProduct.price}`;
+  if(currentProduct.oldPrice){
+    document.getElementById('modalOldPrice').style.display='block';
+    document.getElementById('modalOldPrice').textContent=`$${currentProduct.oldPrice}`;
+    document.getElementById('modalDisc').style.display='block';
+    document.getElementById('modalDisc').textContent=`-${Math.round((1-currentProduct.price/currentProduct.oldPrice)*100)}%`;
+  }else{document.getElementById('modalOldPrice').style.display='none';document.getElementById('modalDisc').style.display='none';}
+  document.getElementById('modalDesc').textContent = currentProduct.desc;
+  document.getElementById('modalMainImg').src = currentProduct.imgs[0];
+  document.getElementById('modalThumbs').innerHTML = currentProduct.imgs.map((img,i)=>`<div class="modal-thumb ${i===0?'active':''}" onclick="switchImg('${img}',this)"><img src="${img}" alt=""></div>`).join('');
+  document.getElementById('selectedColorName').textContent = currentColor.name;
+  document.getElementById('modalColors').innerHTML = currentProduct.colors.map((c,i)=>`<div class="color-swatch ${i===0?'active':''}" style="background:${c.hex}" title="${c.name}" onclick="selectColor(this,'${c.name}','${c.hex}')"></div>`).join('');
+  document.getElementById('modalSizes').innerHTML = currentProduct.sizes.map(s=>`<button class="size-btn ${currentProduct.oosizes.includes(s)?'oos':''}" onclick="selectSize(this,'${s}')" ${currentProduct.oosizes.includes(s)?'disabled':''}>${s}</button>`).join('');
+  document.getElementById('modalTags').innerHTML = currentProduct.tags.map(t=>`<span class="modal-tag">${t}</span>`).join('');
+  document.getElementById('qtyVal').textContent='1';
+  document.getElementById('addBtnText').textContent='ADD TO CART';
+  document.querySelector('.modal-add-btn').classList.remove('success');
+  document.getElementById('modalOverlay').classList.add('open');
+  document.body.style.overflow='hidden';
+}
+function closeModal(){document.getElementById('modalOverlay').classList.remove('open');document.body.style.overflow='';}
+function closeModalOnBg(e){if(e.target===document.getElementById('modalOverlay'))closeModal();}
+function switchImg(src,el){document.getElementById('modalMainImg').src=src;document.querySelectorAll('.modal-thumb').forEach(t=>t.classList.remove('active'));el.classList.add('active');}
+function selectColor(el,name,hex){document.querySelectorAll('.color-swatch').forEach(s=>s.classList.remove('active'));el.classList.add('active');currentColor={name,hex};document.getElementById('selectedColorName').textContent=name;}
+function selectSize(btn,size){if(btn.classList.contains('oos'))return;document.querySelectorAll('.size-btn').forEach(b=>b.classList.remove('active'));btn.classList.add('active');currentSize=size;}
+function changeQty(delta){currentQty=Math.max(1,Math.min(10,currentQty+delta));document.getElementById('qtyVal').textContent=currentQty;}
+
+/* ══ ADD TO CART FROM MODAL ══ */
+function addToCartFromModal(){
+  if(!currentSize){showToast('⚠','Please select a size');document.getElementById('modalSizes').style.outline='1px solid #ff3d00';setTimeout(()=>document.getElementById('modalSizes').style.outline='',2000);return;}
+  addToCart(currentProduct,currentSize,currentColor,currentQty);
+  const btn=document.querySelector('.modal-add-btn');
+  btn.classList.add('success');document.getElementById('addBtnText').textContent='✓ ADDED TO CART';
+  setTimeout(()=>{btn.classList.remove('success');document.getElementById('addBtnText').textContent='ADD TO CART';},1500);
+}
+function addToWishlist(){showToast('♡',`${currentProduct.name} saved to wishlist`);}
+
+/* ══ CART MANAGEMENT ══ */
+function addToCart(product,size,color,qty=1){
+  const key=`${product.id}-${size}-${color.hex}`;
+  const existing=cart.find(item=>item.key===key);
+  if(existing)existing.qty+=qty;
+  else cart.push({key,product,size,color,qty});
+  updateCartUI();
+  showToast('✓',`${product.name} — Size ${size} added!`);
+}
+function removeFromCart(key){cart=cart.filter(item=>item.key!==key);updateCartUI();}
+function updateCartQty(key,delta){const item=cart.find(i=>i.key===key);if(!item)return;item.qty+=delta;if(item.qty<=0)cart=cart.filter(i=>i.key!==key);updateCartUI();}
+function updateCartUI(){
+  const count=cart.reduce((sum,i)=>sum+i.qty,0);
+  document.getElementById('cartBadge').textContent=count;
+  document.getElementById('cartCount').textContent=`(${count})`;
+  const itemsEl=document.getElementById('cartItems');
+  if(cart.length===0){itemsEl.innerHTML='<div class="cart-empty"><div class="cart-empty-icon">👟</div><p>Your cart is empty</p></div>';}
+  else{itemsEl.innerHTML=cart.map(item=>`
+    <div class="cart-item">
+      <div class="cart-item-img"><img src="${item.product.img}" alt="${item.product.name}"></div>
+      <div>
+        <div class="cart-item-name">${item.product.name}</div>
+        <div class="cart-item-meta"><span>Size ${item.size}</span><span style="display:inline-block;width:12px;height:12px;border-radius:50%;background:${item.color.hex};border:1px solid rgba(255,255,255,.2);vertical-align:middle"></span><span>${item.color.name}</span></div>
+        <div class="cart-item-price">$${(item.product.price*item.qty).toFixed(2)}</div>
+        <div class="cart-qty">
+          <button class="qty-btn" onclick="updateCartQty('${item.key}',-1)">−</button>
+          <span class="qty-val">${item.qty}</span>
+          <button class="qty-btn" onclick="updateCartQty('${item.key}',1)">+</button>
+        </div>
+      </div>
+      <button class="remove-btn" onclick="removeFromCart('${item.key}')">✕</button>
+    </div>`).join('');}
+  const subtotal=cart.reduce((sum,i)=>sum+i.product.price*i.qty,0);
+  const discountAmt=promoApplied?(promoDiscount<1?subtotal*promoDiscount:promoDiscount):0;
+  const shipping=subtotal-discountAmt>=200?0:(subtotal>0?15:0);
+  const total=subtotal-discountAmt+shipping;
+  document.getElementById('subtotalVal').textContent=`$${subtotal.toFixed(2)}`;
+  document.getElementById('shippingVal').textContent=subtotal===0?'Calculated at checkout':(shipping===0?'FREE':`$${shipping.toFixed(2)}`);
+  document.getElementById('totalVal').textContent=`$${total.toFixed(2)}`;
+  if(promoApplied&&discountAmt>0){document.getElementById('discountRow').style.display='flex';document.getElementById('discountVal').textContent=`-$${discountAmt.toFixed(2)}`;}
+  else document.getElementById('discountRow').style.display='none';
+  addHoverCursor('.qty-btn,.remove-btn,.checkout-btn,.promo-btn');
+}
+
+/* ══ PROMO CODE ══ */
+function applyPromo(){
+  const code=document.getElementById('promoInput').value.trim().toUpperCase();
+  const codes={'STRIDE20':.20,'WELCOME10':.10,'SUMMER15':.15,'FLAT30':30};
+  if(codes[code]){promoApplied=true;promoDiscount=codes[code];showToast('🎉',`Promo "${code}" applied!`);updateCartUI();}
+  else showToast('✕','Invalid promo code');
+}
+
+/* ══ CART OPEN/CLOSE ══ */
+function openCart(){document.getElementById('cartOverlay').classList.add('open');document.getElementById('cartDrawer').classList.add('open');document.body.style.overflow='hidden';}
+function closeCart(){document.getElementById('cartOverlay').classList.remove('open');document.getElementById('cartDrawer').classList.remove('open');document.body.style.overflow='';}
+
+/* ══ PAYMENT SYSTEM ══ */
+function openPayment(){if(cart.length===0){showToast('⚠','Your cart is empty');return;}closeCart();currentPayStep=1;payData={};renderPayStep();document.getElementById('payOverlay').classList.add('open');document.body.style.overflow='hidden';}
+function closePayment(){document.getElementById('payOverlay').classList.remove('open');document.body.style.overflow='';}
+function updateStepIndicator(step){document.querySelectorAll('.pay-step').forEach((el,i)=>{el.classList.remove('active','done');const num=el.querySelector('.pay-step-num');if(i+1<step){el.classList.add('done');num.textContent='✓';}else if(i+1===step){el.classList.add('active');num.textContent=i+1;}else num.textContent=i+1;});}
+function getOrderSummaryHTML(){
+  const subtotal=cart.reduce((s,i)=>s+i.product.price*i.qty,0);
+  const discountAmt=promoApplied?(promoDiscount<1?subtotal*promoDiscount:promoDiscount):0;
+  const shipping=payData.shipping==='express'?25:payData.shipping==='overnight'?45:(subtotal-discountAmt>=200?0:15);
+  const total=subtotal-discountAmt+shipping;
+  return `<div class="pay-summary"><div class="pay-summary-title">ORDER SUMMARY</div>
+    ${cart.map(item=>`<div class="pay-summary-item"><div class="pay-summary-item-left"><div class="pay-item-thumb"><img src="${item.product.img}" alt=""></div><div><div class="pay-item-name">${item.product.name} × ${item.qty}</div><div class="pay-item-meta">Size ${item.size} · ${item.color.name}</div></div></div><div class="pay-item-price">$${(item.product.price*item.qty).toFixed(2)}</div></div>`).join('')}
+    <div class="pay-total-section">
+      <div class="pay-total-line"><span>Subtotal</span><span>$${subtotal.toFixed(2)}</span></div>
+      ${discountAmt>0?`<div class="pay-total-line" style="color:var(--success)"><span>Discount</span><span>-$${discountAmt.toFixed(2)}</span></div>`:''}
+      <div class="pay-total-line"><span>Shipping</span><span>${shipping===0?'FREE':'$'+shipping.toFixed(2)}</span></div>
+      <div class="pay-total-line main"><span>TOTAL</span><span class="amount">$${total.toFixed(2)}</span></div>
+    </div></div>`;
+}
+function renderPayStep(){
+  updateStepIndicator(currentPayStep);
+  const body=document.getElementById('payBody');
+  const footer=document.getElementById('payFooter');
+  if(currentPayStep===1){
+    body.innerHTML=`${getOrderSummaryHTML()}<div class="pay-section"><div class="pay-section-title">CONTACT INFORMATION</div><div class="form-grid cols2"><div class="form-group"><label class="form-label">First Name</label><input type="text" class="form-input" id="pFN" placeholder="Alex" value="${payData.firstName||''}"></div><div class="form-group"><label class="form-label">Last Name</label><input type="text" class="form-input" id="pLN" placeholder="Jordan" value="${payData.lastName||''}"></div></div><div class="form-grid" style="margin-top:14px"><div class="form-group"><label class="form-label">Email Address</label><input type="email" class="form-input" id="pEM" placeholder="alex@example.com" value="${payData.email||''}"></div><div class="form-group" style="margin-top:14px"><label class="form-label">Phone Number</label><input type="tel" class="form-input" id="pPH" placeholder="+1 (555) 000-0000" value="${payData.phone||''}"></div></div></div><div class="pay-section"><div class="pay-section-title">DELIVERY ADDRESS</div><div class="form-grid"><div class="form-group"><label class="form-label">Street Address</label><input type="text" class="form-input" id="pAD" placeholder="123 Main Street" value="${payData.address||''}"></div><div class="form-group" style="margin-top:14px"><label class="form-label">Apartment / Suite</label><input type="text" class="form-input" id="pAP" placeholder="Apt 4B (optional)" value="${payData.apt||''}"></div></div><div class="form-grid cols3" style="margin-top:14px"><div class="form-group"><label class="form-label">City</label><input type="text" class="form-input" id="pCT" placeholder="New York" value="${payData.city||''}"></div><div class="form-group"><label class="form-label">State</label><input type="text" class="form-input" id="pST" placeholder="NY" value="${payData.state||''}"></div><div class="form-group"><label class="form-label">ZIP</label><input type="text" class="form-input" id="pZP" placeholder="10001" value="${payData.zip||''}"></div></div><div class="form-grid" style="margin-top:14px"><div class="form-group"><label class="form-label">Country</label><select class="form-select" id="pCN"><option value="US" ${payData.country==='US'?'selected':''}>United States</option><option value="UK" ${payData.country==='UK'?'selected':''}>United Kingdom</option><option value="CA" ${payData.country==='CA'?'selected':''}>Canada</option><option value="AU" ${payData.country==='AU'?'selected':''}>Australia</option><option value="PK" ${payData.country==='PK'?'selected':''}>Pakistan</option><option value="AE" ${payData.country==='AE'?'selected':''}>UAE</option><option value="DE" ${payData.country==='DE'?'selected':''}>Germany</option><option value="FR" ${payData.country==='FR'?'selected':''}>France</option></select></div></div></div>`;
+    footer.innerHTML=`<div style="flex:1"></div><button class="pay-next-btn" onclick="payNext()"><span>SHIPPING OPTIONS →</span></button>`;
+  } else if(currentPayStep===2){
+    const sub=cart.reduce((s,i)=>s+i.product.price*i.qty,0);
+    const disc=promoApplied?(promoDiscount<1?sub*promoDiscount:promoDiscount):0;
+    const after=sub-disc;
+    body.innerHTML=`${getOrderSummaryHTML()}<div class="pay-section"><div class="pay-section-title">SHIPPING METHOD</div><div class="shipping-options"><div class="shipping-opt ${payData.shipping!=='express'&&payData.shipping!=='overnight'?'active':''}" onclick="selectShipping('standard',this)"><div class="shipping-radio"></div><div class="shipping-info"><div class="shipping-name">Standard Shipping</div><div class="shipping-desc">3–5 business days · ${after>=200?'FREE on orders $200+':'$15.00'}</div></div><div class="shipping-price">${after>=200?'FREE':'$15'}</div></div><div class="shipping-opt ${payData.shipping==='express'?'active':''}" onclick="selectShipping('express',this)"><div class="shipping-radio"></div><div class="shipping-info"><div class="shipping-name">Express Shipping</div><div class="shipping-desc">1–2 business days · Priority handling</div></div><div class="shipping-price">$25</div></div><div class="shipping-opt ${payData.shipping==='overnight'?'active':''}" onclick="selectShipping('overnight',this)"><div class="shipping-radio"></div><div class="shipping-info"><div class="shipping-name">Overnight Delivery</div><div class="shipping-desc">Next business day by noon</div></div><div class="shipping-price">$45</div></div></div></div>`;
+    footer.innerHTML=`<button class="pay-back-btn" onclick="payBack()">← Back</button><button class="pay-next-btn" onclick="payNext()"><span>PAYMENT →</span></button>`;
+  } else if(currentPayStep===3){
+    body.innerHTML=`${getOrderSummaryHTML()}<div class="pay-section"><div class="pay-section-title">PAYMENT METHOD</div><div class="pay-methods"><div class="pay-method ${payData.payMethod!=='paypal'&&payData.payMethod!=='apple'&&payData.payMethod!=='crypto'?'active':''}" onclick="selectPayMethod('card',this)"><div class="pay-method-icon">💳</div><div class="pay-method-name">Card</div></div><div class="pay-method ${payData.payMethod==='paypal'?'active':''}" onclick="selectPayMethod('paypal',this)"><div class="pay-method-icon">🅿</div><div class="pay-method-name">PayPal</div></div><div class="pay-method ${payData.payMethod==='apple'?'active':''}" onclick="selectPayMethod('apple',this)"><div class="pay-method-icon">🍎</div><div class="pay-method-name">Apple Pay</div></div><div class="pay-method ${payData.payMethod==='crypto'?'active':''}" onclick="selectPayMethod('crypto',this)"><div class="pay-method-icon">₿</div><div class="pay-method-name">Crypto</div></div></div><div id="cardDetails"><div class="form-group" style="margin-bottom:14px"><label class="form-label">Card Number</label><div class="card-field-wrap"><input type="text" class="form-input" id="pCN" placeholder="1234 5678 9012 3456" maxlength="19" oninput="formatCard(this)" value="${payData.cardNum||''}"><div class="card-icons"><span class="card-icon-img">VISA</span><span class="card-icon-img">MC</span></div></div></div><div class="form-grid cols2"><div class="form-group"><label class="form-label">Name on Card</label><input type="text" class="form-input" id="pNM" placeholder="ALEX JORDAN" style="text-transform:uppercase" value="${payData.cardName||''}"></div><div class="form-group"><div class="form-grid cols2"><div class="form-group"><label class="form-label">Expiry</label><input type="text" class="form-input" id="pEX" placeholder="08/26" maxlength="5" oninput="formatExpiry(this)" value="${payData.expiry||''}"></div><div class="form-group"><label class="form-label">CVV</label><input type="password" class="form-input" id="pCV" placeholder="•••" maxlength="4" value="${payData.cvv||''}"></div></div></div></div></div><div id="altPayDetails" style="display:none;padding:40px;text-align:center;color:var(--mid);font-size:14px;border:1px solid var(--border)">You will be redirected to complete payment securely.</div></div>`;
+    footer.innerHTML=`<button class="pay-back-btn" onclick="payBack()">← Back</button><button class="pay-next-btn" onclick="payNext()"><span>REVIEW ORDER →</span></button>`;
+  } else if(currentPayStep===4){
+    const sub=cart.reduce((s,i)=>s+i.product.price*i.qty,0);
+    const disc=promoApplied?(promoDiscount<1?sub*promoDiscount:promoDiscount):0;
+    const ship=payData.shipping==='express'?25:payData.shipping==='overnight'?45:(sub-disc>=200?0:15);
+    const total=sub-disc+ship;
+    const shipLbl=payData.shipping==='express'?'Express (1-2 days)':payData.shipping==='overnight'?'Overnight':'Standard (3-5 days)';
+    const payLbl=payData.payMethod==='paypal'?'PayPal':payData.payMethod==='apple'?'Apple Pay':payData.payMethod==='crypto'?'Cryptocurrency':`Card ending ${(payData.cardNum||'0000').replace(/\s/g,'').slice(-4)}`;
+    body.innerHTML=`${getOrderSummaryHTML()}<div class="pay-section"><div class="pay-section-title">REVIEW & CONFIRM</div><div style="display:grid;grid-template-columns:1fr 1fr;gap:16px"><div style="background:rgba(255,255,255,.04);border:1px solid var(--border);padding:20px"><div style="font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--mid);margin-bottom:12px">Deliver To</div><div style="font-size:15px;margin-bottom:6px">${payData.firstName} ${payData.lastName}</div><div style="font-size:13px;color:var(--mid);line-height:1.7">${payData.address}${payData.apt?', '+payData.apt:''}<br>${payData.city}, ${payData.state} ${payData.zip}<br>${payData.country}</div></div><div style="background:rgba(255,255,255,.04);border:1px solid var(--border);padding:20px"><div style="font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--mid);margin-bottom:12px">Payment</div><div style="font-size:15px;margin-bottom:6px">${payLbl}</div><div style="font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--mid);margin-top:12px">Shipping</div><div style="font-size:15px;margin-top:6px">${shipLbl}</div></div></div></div><p class="pay-note" style="margin-top:0">By placing your order you agree to STRIDE's <a href="#" style="color:var(--accent)">Terms</a> and <a href="#" style="color:var(--accent)">Privacy Policy</a>.</p>`;
+    footer.innerHTML=`<button class="pay-back-btn" onclick="payBack()">← Back</button><button class="pay-next-btn" onclick="placeOrder()" style="background:var(--success)"><span>✓ PLACE ORDER — $${total.toFixed(2)}</span></button>`;
+  }
+  addHoverCursor('.pay-back-btn,.pay-next-btn,.pay-method,.shipping-opt,.form-input,.form-select');
+}
+function payNext(){
+  if(currentPayStep===1){
+    const fn=document.getElementById('pFN')?.value;
+    const em=document.getElementById('pEM')?.value;
+    const ad=document.getElementById('pAD')?.value;
+    if(!fn||!em||!ad){showToast('⚠','Please fill all required fields');return;}
+    payData.firstName=fn;payData.lastName=document.getElementById('pLN')?.value;
+    payData.email=em;payData.phone=document.getElementById('pPH')?.value;
+    payData.address=ad;payData.apt=document.getElementById('pAP')?.value;
+    payData.city=document.getElementById('pCT')?.value;payData.state=document.getElementById('pST')?.value;
+    payData.zip=document.getElementById('pZP')?.value;payData.country=document.getElementById('pCN')?.value;
+    if(!payData.shipping)payData.shipping='standard';
+  } else if(currentPayStep===3){
+    const method=payData.payMethod||'card';
+    if(method==='card'){
+      const cn=document.getElementById('pCN')?.value?.replace(/\s/g,'');
+      const nm=document.getElementById('pNM')?.value;
+      const ex=document.getElementById('pEX')?.value;
+      const cv=document.getElementById('pCV')?.value;
+      if(!cn||cn.length<13||!nm||!ex||ex.length<5||!cv||cv.length<3){showToast('⚠','Please complete card details');return;}
+      payData.cardNum=document.getElementById('pCN').value;payData.cardName=nm;payData.expiry=ex;payData.cvv=cv;
+    }
+  }
+  currentPayStep++;renderPayStep();document.getElementById('payBody').scrollTop=0;
+}
+function payBack(){currentPayStep--;renderPayStep();document.getElementById('payBody').scrollTop=0;}
+function selectShipping(type,el){document.querySelectorAll('.shipping-opt').forEach(o=>o.classList.remove('active'));el.classList.add('active');payData.shipping=type;}
+function selectPayMethod(type,el){document.querySelectorAll('.pay-method').forEach(m=>m.classList.remove('active'));el.classList.add('active');payData.payMethod=type;document.getElementById('cardDetails').style.display=type==='card'?'block':'none';document.getElementById('altPayDetails').style.display=type!=='card'?'block':'none';}
+function formatCard(input){let v=input.value.replace(/\D/g,'').substring(0,16);input.value=v.match(/.{1,4}/g)?.join(' ')||v;}
+function formatExpiry(input){let v=input.value.replace(/\D/g,'');if(v.length>=2)v=v.substring(0,2)+'/'+v.substring(2,4);input.value=v;}
+function placeOrder(){
+  const btn=document.querySelector('#payFooter .pay-next-btn span');
+  if(btn)btn.textContent='PROCESSING...';
+  setTimeout(()=>{
+    const orderNum='STR-'+Math.random().toString(36).substring(2,8).toUpperCase();
+    document.getElementById('payBody').innerHTML=`<div class="success-screen"><div class="success-icon">🎉</div><div class="success-title">ORDER PLACED!</div><div class="success-order">Order #${orderNum}</div><p class="success-msg">Thank you ${payData.firstName}! Your order is confirmed. A confirmation email has been sent to <strong style="color:var(--white)">${payData.email}</strong>.</p><div class="success-track"><div class="track-step"><div class="track-dot done">✓</div><div class="track-label done">Confirmed</div></div><div class="track-line done" style="align-self:flex-start;margin-top:13px"></div><div class="track-step"><div class="track-dot current">📦</div><div class="track-label">Processing</div></div><div class="track-line" style="align-self:flex-start;margin-top:13px"></div><div class="track-step"><div class="track-dot">🚚</div><div class="track-label">Shipped</div></div><div class="track-line" style="align-self:flex-start;margin-top:13px"></div><div class="track-step"><div class="track-dot">✅</div><div class="track-label">Delivered</div></div></div><button class="btn-primary" onclick="closePayment();cart=[];updateCartUI();" style="margin:0 auto"><span>CONTINUE SHOPPING</span></button></div>`;
+    document.getElementById('payFooter').innerHTML='';
+    document.getElementById('paySteps').style.display='none';
+    cart=[];updateCartUI();
+  },1800);
+}
+
+/* ══ TOAST ══ */
+let toastTimer;
+function showToast(icon,msg){
+  const t=document.getElementById('toast');
+  document.getElementById('toastIcon').textContent=icon;
+  document.getElementById('toastMsg').textContent=msg;
+  t.classList.add('show');clearTimeout(toastTimer);
+  toastTimer=setTimeout(()=>t.classList.remove('show'),3000);
+}
+
+/* ══ NEWSLETTER ══ */
+function subscribeEmail(){
+  const input=document.querySelector('.cta-input');
+  if(!input.value||!input.value.includes('@')){showToast('⚠','Please enter a valid email');return;}
+  showToast('✓',`You're on the list! Drop incoming.`);input.value='';
+}
+
+/* ══ CUSTOMER AUTH ══ */
+function openCustomerAuth(tab){
+  document.getElementById('customerAuthPage').classList.add('show');
+  document.body.style.overflow='hidden';
+  switchCATab(tab||'login');
+}
+function closeCustomerAuth(){document.getElementById('customerAuthPage').classList.remove('show');document.body.style.overflow='';}
+function switchCATab(tab){
+  document.getElementById('caLoginTab').classList.toggle('active',tab==='login');
+  document.getElementById('caSignupTab').classList.toggle('active',tab==='signup');
+  tab==='login'?renderCALogin():renderCASignup();
+}
+function renderCALogin(prefillEmail){
+  document.getElementById('caFormBody').innerHTML=`
+    <div class="ca-form-title">Welcome back</div>
+    <div class="ca-form-sub">Sign in to your STRIDE account</div>
+    <div class="ca-gen-err" id="caGenErr"></div>
+    <div class="ca-field"><label class="ca-label">Email</label><input class="ca-inp" id="caEmail" type="email" placeholder="you@email.com" value="${prefillEmail||''}"></div>
+    <div class="ca-field"><label class="ca-label">Password</label><div class="ca-input-wrap"><input class="ca-inp" id="caPass" type="password" placeholder="••••••••"><button class="ca-eye" onclick="toggleEye('caPass',this)">👁</button></div></div>
+    <div class="ca-forgot"><a onclick="showToast('📧','Password reset link sent!')">Forgot password?</a></div>
+    <button class="ca-submit" onclick="doCustomerLogin()">Sign In</button>
+    <div class="ca-divider"><span>or</span></div>
+    <div class="ca-social">
+      <button class="ca-social-btn" onclick="showToast('🌐','Google sign-in coming soon')">🌐 Google</button>
+      <button class="ca-social-btn" onclick="showToast('📘','Facebook sign-in coming soon')">📘 Facebook</button>
+    </div>
+    <div class="ca-switch">Don't have an account? <a onclick="switchCATab('signup')">Sign up</a></div>
+    <div style="margin-top:16px;padding:10px;background:rgba(255,61,0,.06);border:1px solid rgba(255,61,0,.15);font-size:11px;color:var(--mid);letter-spacing:1px">
+      Demo: <strong style="color:var(--accent)">alex@stride.com</strong> / <strong style="color:var(--accent)">Alex@123</strong>
+    </div>`;
+}
+function renderCASignup(){
+  document.getElementById('caFormBody').innerHTML=`
+    <div class="ca-form-title">Create account</div>
+    <div class="ca-form-sub">Join the STRIDE community today</div>
+    <div class="ca-gen-err" id="caGenErr"></div>
+    <div class="ca-row2">
+      <div class="ca-field"><label class="ca-label">First Name</label><input class="ca-inp" id="suFirst" placeholder="Alex"><span class="ca-err" id="suFirstErr"></span></div>
+      <div class="ca-field"><label class="ca-label">Last Name</label><input class="ca-inp" id="suLast" placeholder="Jordan"><span class="ca-err" id="suLastErr"></span></div>
+    </div>
+    <div class="ca-field"><label class="ca-label">Email</label><input class="ca-inp" id="suEmail" type="email" placeholder="you@email.com"><span class="ca-err" id="suEmailErr"></span></div>
+    <div class="ca-field"><label class="ca-label">Phone</label><input class="ca-inp" id="suPhone" type="tel" placeholder="+1 000 000 0000"><span class="ca-err" id="suPhoneErr"></span></div>
+    <div class="ca-field"><label class="ca-label">Password</label><div class="ca-input-wrap"><input class="ca-inp" id="suPass" type="password" placeholder="Min 8 chars" oninput="caStrength(this)"><button class="ca-eye" onclick="toggleEye('suPass',this)">👁</button></div><div class="ca-strength"><div class="ca-strength-bar"><div class="ca-strength-fill" id="caStrFill"></div></div><div class="ca-strength-txt" id="caStrTxt"></div></div><span class="ca-err" id="suPassErr"></span></div>
+    <div class="ca-field"><label class="ca-label">Confirm Password</label><input class="ca-inp" id="suPass2" type="password" placeholder="Repeat password"><span class="ca-err" id="suPass2Err"></span></div>
+    <div class="ca-terms"><input type="checkbox" id="suTerms"><span>I agree to the <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a></span></div>
+    <button class="ca-submit" onclick="doCustomerSignup()">Create Account</button>
+    <div class="ca-switch">Already have an account? <a onclick="switchCATab('login')">Sign in</a></div>`;
+}
+function toggleEye(id,btn){const inp=document.getElementById(id);inp.type=inp.type==='password'?'text':'password';btn.textContent=inp.type==='password'?'👁':'🙈';}
+function caStrength(inp){
+  const v=inp.value;let score=0;
+  if(v.length>=8)score++;if(/[A-Z]/.test(v))score++;if(/[0-9]/.test(v))score++;if(/[^A-Za-z0-9]/.test(v))score++;
+  const labels=['','Weak','Fair','Good','Strong'];const colors=['','#ff3d00','#ff6b00','#3498db','#22c55e'];
+  document.getElementById('caStrFill').style.width=(score*25)+'%';
+  document.getElementById('caStrFill').style.background=colors[score]||'';
+  document.getElementById('caStrTxt').textContent=labels[score]||'';
+  document.getElementById('caStrTxt').style.color=colors[score]||'';
+}
+function doCustomerLogin(){
+  const email=document.getElementById('caEmail').value.trim();
+  const pass=document.getElementById('caPass').value;
+  const user=customerUsers.find(u=>u.email===email&&u.password===pass);
+  const errEl=document.getElementById('caGenErr');
+  if(!email||!pass){errEl.textContent='Please fill in all fields.';errEl.classList.add('show');return;}
+  if(!user){errEl.textContent='Incorrect email or password.';errEl.classList.add('show');return;}
+  errEl.classList.remove('show');currentCustomer=user;updateNavForCustomer();closeCustomerAuth();
+  showToast('✓',`Welcome back, ${user.name.split(' ')[0]}!`);
+}
+function doCustomerSignup(){
+  let valid=true;
+  const first=document.getElementById('suFirst').value.trim();
+  const last=document.getElementById('suLast').value.trim();
+  const email=document.getElementById('suEmail').value.trim();
+  const phone=document.getElementById('suPhone').value.trim();
+  const pass=document.getElementById('suPass').value;
+  const pass2=document.getElementById('suPass2').value;
+  const terms=document.getElementById('suTerms').checked;
+  const show=(id,msg)=>{document.getElementById(id).textContent=msg;if(msg)valid=false;};
+  show('suFirstErr',first.length<2?'Min 2 characters':'');
+  show('suLastErr',last.length<2?'Min 2 characters':'');
+  show('suEmailErr',!/\S+@\S+\.\S+/.test(email)?'Valid email required':customerUsers.find(u=>u.email===email)?'Email already registered':'');
+  show('suPhoneErr',phone.length<7?'Valid phone required':'');
+  show('suPassErr',pass.length<8||!/[A-Z]/.test(pass)||!/[0-9]/.test(pass)?'Min 8 chars, 1 uppercase, 1 number':'');
+  show('suPass2Err',pass!==pass2?'Passwords do not match':'');
+  if(!terms){const ge=document.getElementById('caGenErr');ge.textContent='Please accept the terms.';ge.classList.add('show');valid=false;}
+  if(!valid)return;
+  const newUser={name:first+' '+last,email,password:pass,phone,city:'',joined:new Date().toISOString().split('T')[0],orders:[]};
+  customerUsers.push(newUser);
+  MOCK_CUSTOMERS.push({id:'SC00'+(MOCK_CUSTOMERS.length+1),name:newUser.name,email,city:'',phone,orders:0,spent:'$0.00'});
+  document.getElementById('caFormBody').innerHTML=`<div class="ca-success-wrap"><div class="ca-success-icon">🎉</div><div class="ca-success-title">Account Created!</div><div class="ca-success-sub">Welcome to STRIDE, <strong>${first}</strong>!<br>Your account has been created successfully.</div><button class="ca-submit" onclick="switchCATab('login');renderCALogin('${email}')">Sign In Now</button></div>`;
+}
+function updateNavForCustomer(){
+  const guest=document.getElementById('navGuest');
+  const chip=document.getElementById('navLoggedIn');
+  if(currentCustomer){guest.style.display='none';chip.style.display='flex';document.getElementById('navCustInitial').textContent=currentCustomer.name[0].toUpperCase();document.getElementById('navCustName').textContent=currentCustomer.name.split(' ')[0];}
+  else{guest.style.display='flex';chip.style.display='none';}
+}
+function customerLogout(){currentCustomer=null;updateNavForCustomer();closeCustomerProfile();showToast('👋','Signed out successfully');}
+
+/* ══ CUSTOMER PROFILE PANEL ══ */
+function openCustomerProfile(){
+  if(!currentCustomer)return;
+  document.getElementById('cpAvatar').textContent=currentCustomer.name[0].toUpperCase();
+  document.getElementById('cpName').textContent=currentCustomer.name;
+  document.getElementById('cpEmail').textContent=currentCustomer.email;
+  document.getElementById('cpEditName').value=currentCustomer.name;
+  document.getElementById('cpEditEmail').value=currentCustomer.email;
+  document.getElementById('cpEditPhone').value=currentCustomer.phone||'';
+  document.getElementById('cpEditCity').value=currentCustomer.city||'';
+  renderCPOrders();
+  document.getElementById('customerProfilePanel').classList.add('open');
+  document.body.style.overflow='hidden';
+}
+function closeCustomerProfile(){document.getElementById('customerProfilePanel').classList.remove('open');document.body.style.overflow='';}
+function switchCPTab(tab,btn){
+  document.querySelectorAll('.cp-tab').forEach(t=>t.classList.remove('active'));
+  document.querySelectorAll('.cp-panel').forEach(p=>p.classList.remove('active'));
+  if(btn)btn.classList.add('active');
+  document.getElementById('cp-'+tab).classList.add('active');
+}
+function renderCPOrders(){
+  const orders=currentCustomer.orders?MOCK_ORDERS.filter(o=>currentCustomer.orders.includes(o.id)):[];
+  const list=document.getElementById('cpOrdersList');
+  if(!orders.length){list.innerHTML=`<div style="text-align:center;padding:36px;color:var(--mid)">No orders yet.</div>`;return;}
+  list.innerHTML=orders.map(o=>`<div class="cp-order-card"><div class="cp-order-id">#${o.id}</div><div class="cp-order-meta">${o.product} · Size ${o.size} · ${o.date}</div><div class="cp-order-row"><span class="s-badge s-${o.status}">${o.status.charAt(0).toUpperCase()+o.status.slice(1)}</span><span class="cp-order-total">${o.total}</span></div></div>`).join('');
+}
+function saveCustomerProfile(){
+  currentCustomer.name=document.getElementById('cpEditName').value.trim()||currentCustomer.name;
+  currentCustomer.email=document.getElementById('cpEditEmail').value.trim()||currentCustomer.email;
+  currentCustomer.phone=document.getElementById('cpEditPhone').value.trim();
+  currentCustomer.city=document.getElementById('cpEditCity').value.trim();
+  document.getElementById('cpName').textContent=currentCustomer.name;
+  document.getElementById('cpEmail').textContent=currentCustomer.email;
+  document.getElementById('cpAvatar').textContent=currentCustomer.name[0].toUpperCase();
+  document.getElementById('navCustInitial').textContent=currentCustomer.name[0].toUpperCase();
+  document.getElementById('navCustName').textContent=currentCustomer.name.split(' ')[0];
+  showToast('✓','Profile updated');
+}
+
+/* ══ ADMIN AUTH ══ */
+function openAdminAuth(){document.getElementById('adminAuthOverlay').classList.add('open');document.body.style.overflow='hidden';renderAACLogin();}
+function closeAdminAuth(){document.getElementById('adminAuthOverlay').classList.remove('open');document.body.style.overflow='';}
+function renderAACLogin(){
+  document.getElementById('aacFormBody').innerHTML=`
+    <div class="aac-gen-err" id="aacGenErr"></div>
+    <div class="aac-field"><label class="aac-label">Email</label><input class="aac-inp" id="aacEmail" type="email" placeholder="admin@stride.com"></div>
+    <div class="aac-field"><label class="aac-label">Password</label><div class="aac-inp-wrap"><input class="aac-inp" id="aacPass" type="password" placeholder="••••••••"><button class="aac-eye" onclick="toggleEye('aacPass',this)">👁</button></div></div>
+    <button class="aac-submit" onclick="doAdminLogin()">Sign In</button>
+    <div style="margin-top:14px;padding:10px;background:rgba(255,61,0,.06);border:1px solid rgba(255,61,0,.15);font-size:11px;color:var(--mid);letter-spacing:1px;text-align:center">
+      Demo: <strong style="color:var(--accent)">admin@stride.com</strong> / <strong style="color:var(--accent)">Admin@123</strong>
+    </div>`;
+}
+function doAdminLogin(){
+  const email=document.getElementById('aacEmail').value.trim();
+  const pass=document.getElementById('aacPass').value;
+  const user=adminUsers.find(u=>u.email===email&&u.password===pass);
+  const errEl=document.getElementById('aacGenErr');
+  if(!email||!pass){errEl.textContent='Please fill in all fields.';errEl.classList.add('show');return;}
+  if(!user){errEl.textContent='Incorrect email or password.';errEl.classList.add('show');return;}
+  errEl.classList.remove('show');currentAdmin=user;closeAdminAuth();enterAdmin();
+}
+function enterAdmin(){
+  document.getElementById('storePage').style.display='none';
+  document.getElementById('adminPage').classList.add('show');
+  document.getElementById('adminInitialBadge').textContent=currentAdmin.name[0].toUpperCase();
+  document.getElementById('adminNameLabel').textContent=currentAdmin.name;
+  renderRevenueChart();
+  renderOrdersTable(MOCK_ORDERS,'ordersTable');
+  renderOrdersTable(MOCK_ORDERS.slice(0,4),'dashOrdersTable');
+  renderCustomersTable(MOCK_CUSTOMERS);
+  renderPMGrid();
+  document.body.style.overflow='';
+}
+function goToStore(){document.getElementById('storePage').style.display='';document.getElementById('adminPage').classList.remove('show');}
+function adminLogout(){currentAdmin=null;goToStore();showToast('👋','Logged out of admin panel');}
+function switchAdminPanel(name,btn){
+  document.querySelectorAll('.admin-panel').forEach(p=>p.classList.remove('active'));
+  document.querySelectorAll('.sb-btn').forEach(b=>b.classList.remove('active'));
+  document.getElementById('panel-'+name).classList.add('active');
+  if(btn)btn.classList.add('active');
+}
+
+/* ══ ADMIN — REVENUE CHART ══ */
+function renderRevenueChart(){
+  const data=[{m:'Jan',v:38},{m:'Feb',v:42},{m:'Mar',v:31},{m:'Apr',v:55},{m:'May',v:62},{m:'Jun',v:48},{m:'Jul',v:71},{m:'Aug',v:58}];
+  const max=Math.max(...data.map(d=>d.v));
+  document.getElementById('revenueChart').innerHTML=data.map(d=>`<div class="bar-group"><div class="bar-val">$${d.v}k</div><div class="bar" style="height:${(d.v/max)*100}%" title="$${d.v}k"></div><div class="bar-lbl">${d.m}</div></div>`).join('');
+}
+
+/* ══ ADMIN — ORDERS TABLE ══ */
+function statusBadge(s){const map={delivered:'s-delivered',pending:'s-pending',shipped:'s-shipped',cancelled:'s-cancelled'};return `<span class="s-badge ${map[s]||''}">${s.charAt(0).toUpperCase()+s.slice(1)}</span>`;}
+function renderOrdersTable(orders,tableId){
+  const isDash=tableId==='dashOrdersTable';
+  document.getElementById(tableId).innerHTML=`<thead><tr>
+    <th>Order ID</th><th>Customer</th><th>Email</th><th>Phone</th><th>Country</th><th>City</th><th>Address</th><th>Postal</th>
+    <th>Product</th><th>Size</th><th>Total</th><th>Status</th><th>Date</th><th>Action</th>
+  </tr></thead><tbody>${orders.map(o=>`<tr>
+    <td class="td-id">#${o.id}</td>
+    <td>${o.customer}</td>
+    <td style="font-size:11px">${o.email}</td>
+    <td style="white-space:nowrap">${o.phone||'—'}</td>
+    <td>${o.country||'—'}</td>
+    <td>${o.city}</td>
+    <td style="font-size:11px;min-width:150px">${o.address||'—'}</td>
+    <td>${o.postal||'—'}</td>
+    <td>${o.product}</td>
+    <td>${o.size}</td>
+    <td><strong>${o.total}</strong></td>
+    <td>${statusBadge(o.status)}</td>
+    <td style="white-space:nowrap">${o.date}</td>
+    <td style="white-space:nowrap;display:flex;gap:4px">
+      <button class="td-act" onclick="showToast('👁','Viewing #${o.id}')">View</button>
+      ${!isDash?`<button class="td-act del" onclick="showToast('🗑','Order #${o.id} deleted')">Del</button>`:''}
+    </td>
+  </tr>`).join('')}</tbody>`;
+}
+function filterOrders(q){const f=MOCK_ORDERS.filter(o=>[o.id,o.customer,o.email,o.product,o.status].some(v=>v.toLowerCase().includes(q.toLowerCase())));renderOrdersTable(f,'ordersTable');}
+
+/* ══ ADMIN — CUSTOMERS TABLE ══ */
+function renderCustomersTable(customers){
+  document.getElementById('customersTable').innerHTML=`<thead><tr><th>ID</th><th>Name</th><th>Email</th><th>City</th><th>Phone</th><th>Orders</th><th>Total Spent</th><th>Action</th></tr></thead>
+  <tbody>${customers.map(c=>`<tr><td class="td-id">${c.id}</td><td>${c.name}</td><td>${c.email}</td><td>${c.city}</td><td>${c.phone}</td><td>${c.orders}</td><td>${c.spent}</td><td><button class="td-act" onclick="showToast('👁','Viewing ${c.name}')">View</button></td></tr>`).join('')}</tbody>`;
+}
+function filterCustomers(q){const f=MOCK_CUSTOMERS.filter(c=>[c.name,c.email,c.city,c.phone].some(v=>v.toLowerCase().includes(q.toLowerCase())));renderCustomersTable(f);}
+
+/* ══ ADMIN — PRODUCT MANAGER ══ */
+function renderPMGrid(){
+  document.getElementById('pmGrid').innerHTML=PRODUCTS.map(p=>`
+    <div class="pm-card">
+      <div class="pm-img" style="position:relative">
+        <img src="${(p.imgs&&p.imgs[0])||p.img}" alt="${p.name}" loading="lazy">
+        ${p.badge?`<div style="position:absolute;top:8px;left:8px;background:${p.badge==='sale'?'#ff6b00':p.badge==='hot'?'linear-gradient(135deg,#ff3d00,#ff8800)':'var(--accent)'};color:#fff;font-size:9px;letter-spacing:2px;text-transform:uppercase;padding:3px 8px">${p.badge.toUpperCase()}</div>`:''}
+      </div>
+      <div class="pm-body">
+        <div class="pm-name">${p.name}</div>
+        <div style="font-size:10px;color:var(--mid);letter-spacing:1px;text-transform:uppercase;margin-bottom:4px">${p.brand} · ${p.category}</div>
+        <div class="pm-price">$${p.price}${p.oldPrice?`<span style="font-size:11px;color:var(--mid);text-decoration:line-through;margin-left:6px">$${p.oldPrice}</span>`:''}</div>
+        <div style="font-size:10px;color:var(--mid);margin-bottom:10px">${p.sizes&&p.sizes.length?`Sizes: ${p.sizes.slice(0,5).join(', ')}${p.sizes.length>5?'…':''}`:'No sizes'} · ${p.colors?p.colors.length+' colors':'—'}</div>
+        <div class="pm-acts">
+          <button class="pm-edit-btn" onclick="openProdEditor(${p.id})">✏ Edit</button>
+          <button class="pm-del-btn" onclick="deleteProduct(${p.id})">✕</button>
+        </div>
+      </div>
+    </div>`).join('');
+}
+function deleteProduct(id){
+  if(!confirm('Delete this product?'))return;
+  PRODUCTS=PRODUCTS.filter(p=>p.id!==id);
+  renderPMGrid();renderProducts();
+  showToast('🗑','Product deleted');
+}
+
+/* ══ PRODUCT EDITOR ══ */
+function openProdEditor(id){
+  editingProductId=id;
+  const p=id?PRODUCTS.find(x=>x.id===id):null;
+  document.getElementById('pemTitle').textContent=p?'Edit Product':'Add Product';
+  const sizeChecks=EU_SIZES.map(s=>{
+    const hasSz=p&&p.euSizes&&p.euSizes.includes(s);
+    const stock=(p&&p.stock&&p.stock[s])?p.stock[s]:(hasSz?10:0);
+    return `<div class="sz-item"><label class="sz-lbl ${hasSz?'sel':''}" id="szl-${s}" onclick="toggleSzLabel(this)">${s}</label><input class="sz-qty" id="szq-${s}" type="number" min="0" value="${stock}" placeholder="Stock"></div>`;
+  }).join('');
+  const imgRows=[0,1,2].map(i=>{
+    const url=(p&&p.imgs&&p.imgs[i])?p.imgs[i]:'';
+    return `<div class="img-url-row"><div class="img-prev" id="imgPrev${i}">${url?`<img src="${url}" alt="">`: '🖼'}</div><input class="pem-inp" id="imgUrl${i}" type="url" placeholder="Image URL ${i+1}" value="${url}" oninput="previewImg(${i},this.value)"></div>`;
+  }).join('');
+  const colorRows=[0,1,2].map(i=>{
+    const hex=(p&&p.colors&&p.colors[i])?p.colors[i].hex:'#ff3d00';
+    const name=(p&&p.colors&&p.colors[i])?p.colors[i].name:'';
+    return `<div style="display:grid;grid-template-columns:36px 1fr 80px;gap:8px;align-items:center;margin-bottom:8px"><input type="color" value="${hex}" id="cp-${i}" onchange="syncColorHex(${i})" style="width:36px;height:36px;border:1px solid rgba(255,61,0,.2);background:none;cursor:pointer;padding:2px;"><input class="pem-inp" id="cn-${i}" placeholder="Color name" value="${name}"><input class="pem-inp" id="ch-${i}" placeholder="#hex" value="${hex}" oninput="syncColorPicker(${i})" style="font-family:monospace;font-size:12px;"></div>`;
+  }).join('');
+  document.getElementById('pemBody').innerHTML=`
+    <div class="pem-sec-title">Basic Info</div>
+    <div class="pem-grid two">
+      <div><label class="pem-label">Product Name</label><input class="pem-inp" id="pemName" placeholder="Apex Dark" value="${p?.name||''}"></div>
+      <div><label class="pem-label">Brand</label><input class="pem-inp" id="pemBrand" placeholder="STRIDE" value="${p?.brand||''}"></div>
+    </div>
+    <div class="pem-grid two" style="margin-top:12px">
+      <div><label class="pem-label">Price ($)</label><input class="pem-inp" id="pemPrice" type="number" min="0" placeholder="199" value="${p?.price||''}"></div>
+      <div><label class="pem-label">Old Price ($) <span style="font-weight:300;letter-spacing:0">(optional)</span></label><input class="pem-inp" id="pemOldPrice" type="number" min="0" placeholder="—" value="${p?.oldPrice||''}"></div>
+    </div>
+    <div class="pem-grid two" style="margin-top:12px">
+      <div><label class="pem-label">Category</label>
+        <select class="pem-inp pem-select" id="pemCat">
+          ${['running','lifestyle','trail','performance','formal'].map(c=>`<option value="${c}" ${p?.category===c?'selected':''}>${c.charAt(0).toUpperCase()+c.slice(1)}</option>`).join('')}
+        </select></div>
+      <div><label class="pem-label">Badge</label>
+        <select class="pem-inp pem-select" id="pemBadge">
+          ${['','new','sale','hot','ltd'].map(b=>`<option value="${b}" ${(p?.badge||'')===b?'selected':''}>${b||'None'}</option>`).join('')}
+        </select></div>
+    </div>
+    <div style="margin-top:12px"><label class="pem-label">Type / Subtitle</label><input class="pem-inp" id="pemType" placeholder="Running — Ultralight" value="${p?.type||''}"></div>
+    <div style="margin-top:12px"><label class="pem-label">Description</label><textarea class="pem-inp pem-textarea" id="pemDesc" placeholder="Product description…">${p?.desc||''}</textarea></div>
+    <div class="pem-sec-title" style="margin-top:20px">Product Images</div>
+    <div class="img-url-grp">${imgRows}</div>
+    <div class="pem-sec-title">EU Sizes &amp; Stock</div>
+    <div style="font-size:10px;color:var(--mid);margin-bottom:10px;letter-spacing:.5px">Click a size to toggle it. Enter stock below each.</div>
+    <div class="size-chk-grid">${sizeChecks}</div>
+    <div class="pem-sec-title">Colors</div>
+    ${colorRows}
+    <div style="margin-top:4px"><label class="pem-label">Tags <span style="font-weight:300;letter-spacing:0">(comma-separated)</span></label><input class="pem-inp" id="pemTags" placeholder="Carbon Plate, Ultralight, Racing" value="${(p?.tags||[]).join(', ')}"></div>
+    <button class="pem-submit" onclick="saveProdEditor()">Save Product</button>`;
+  document.getElementById('prodEditOverlay').classList.add('open');
+  document.body.style.overflow='hidden';
+}
+function toggleSzLabel(lbl){lbl.classList.toggle('sel');}
+function previewImg(i,url){const prev=document.getElementById('imgPrev'+i);prev.innerHTML=url?`<img src="${url}" alt="" onerror="this.parentNode.textContent='🖼'">`: '🖼';}
+function syncColorHex(i){document.getElementById('ch-'+i).value=document.getElementById('cp-'+i).value;}
+function syncColorPicker(i){const v=document.getElementById('ch-'+i).value;if(/^#[0-9A-Fa-f]{6}$/.test(v))document.getElementById('cp-'+i).value=v;}
+function closeProdEditor(){document.getElementById('prodEditOverlay').classList.remove('open');document.body.style.overflow='';}
+function saveProdEditor(){
+  const name=document.getElementById('pemName').value.trim();
+  const brand=document.getElementById('pemBrand').value.trim();
+  const price=parseFloat(document.getElementById('pemPrice').value);
+  if(!name||!brand||isNaN(price)){showToast('⚠','Name, brand & price are required');return;}
+  const imgs=[0,1,2].map(i=>document.getElementById('imgUrl'+i).value.trim());
+  const colors=[0,1,2].map(i=>({hex:document.getElementById('ch-'+i).value||document.getElementById('cp-'+i).value,name:document.getElementById('cn-'+i).value.trim()})).filter(c=>c.hex);
+  const euSizes=EU_SIZES.filter(s=>document.getElementById('szl-'+s)?.classList.contains('sel'));
+  const stock={};EU_SIZES.forEach(s=>{const qty=parseInt(document.getElementById('szq-'+s)?.value)||0;if(qty>0)stock[s]=qty;});
+  const tags=document.getElementById('pemTags').value.split(',').map(t=>t.trim()).filter(Boolean);
+  const oldP=parseFloat(document.getElementById('pemOldPrice').value)||undefined;
+  const badge=document.getElementById('pemBadge').value;
+  const product={
+    id:editingProductId||(nextProductId++),
+    name,brand,price,oldPrice:oldP,
+    img:imgs[0]||'https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=600&q=80',
+    imgs,colors,euSizes,stock,
+    sizes:euSizes.map(String),oosizes:[],
+    category:document.getElementById('pemCat').value,
+    type:document.getElementById('pemType').value.trim(),
+    badge,rating:editingProductId?(PRODUCTS.find(x=>x.id===editingProductId)?.rating||5):5,
+    ratingCount:editingProductId?(PRODUCTS.find(x=>x.id===editingProductId)?.ratingCount||0):0,
+    desc:document.getElementById('pemDesc').value.trim(),tags
+  };
+  if(editingProductId){const idx=PRODUCTS.findIndex(p=>p.id===editingProductId);if(idx>-1)PRODUCTS[idx]=product;}
+  else PRODUCTS.unshift(product);
+  closeProdEditor();renderPMGrid();renderProducts();
+  showToast('✓',editingProductId?'Product updated':'Product added');
+}
+
+/* ══ KEYBOARD ESC ══ */
+document.addEventListener('keydown',e=>{
+  if(e.key!=='Escape')return;
+  closeModal();closePayment();closeCart();
+  closeCustomerAuth();closeCustomerProfile();
+  closeAdminAuth();closeProdEditor();
+});
+
+/* ══ PARALLAX ══ */
+document.addEventListener('mousemove',e=>{
+  const x=(e.clientX/window.innerWidth-.5)*20;
+  const y=(e.clientY/window.innerHeight-.5)*10;
+  const showcase=document.querySelector('.shoe-showcase');
+  if(showcase)showcase.style.transform=`translateY(-50%) translate(${x}px,${y}px)`;
+});
+
+/* ══ INIT ══ */
+updateNavForCustomer();
+addHoverCursor('a,button,.product-card,.stat,.feature-card,.color-chip,.size-mini,.nav-cart');
+</script>
+</body>
+</html>
